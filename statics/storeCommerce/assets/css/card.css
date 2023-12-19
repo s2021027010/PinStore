@@ -1,0 +1,182 @@
+.data_body{
+    position: relative;
+    bottom: 5dvh;
+
+}
+
+.input_number  {
+    box-sizing: border-box;
+    border: 3px solid transparent;  
+    outline: none; 
+    background-color: transparent;
+    width: 42dvh;
+    position: relative; 
+    bottom: 118px;
+    left: 40px;
+    word-spacing: normal;
+    font-size: 3.4dvh;   
+     
+    color: #defede;
+    font-family: 'Droid Serif', serif;
+    z-index: 4; 
+    &:hover{
+        border: none none;
+    }
+    &:focus {
+        border: 3px solid transparent; 
+    }
+
+}
+
+
+
+.label_name  {
+    box-sizing: border-box;
+    border: 3px solid transparent; 
+    transition: 0.5s;
+    outline: none;
+    color: rgba(255, 255, 255, 0.775);
+    background-color: transparent;
+    width: 40dvh;
+    position: relative;
+    bottom: 70px;
+    left: -12dvh;
+    word-spacing: normal;
+    font-size: 1.7dvh; 
+    text-shadow: solid 1px 1px;
+    &:hover{
+        border: none none;
+    }
+    &:focus {
+        border: 3px solid transparent; 
+    }
+}
+
+.input_name  {
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    color: rgba(255, 255, 255, 0.775);
+    background-color: transparent;
+    width: 40dvh;
+    position: relative;
+    bottom: 83px;
+    left: -12dvh;
+    word-spacing: normal;
+    font-size: 2.5dvh; 
+    text-shadow: solid 1px 1px;
+    &:hover{
+        border: none none;
+    }
+    &:focus {
+        border: 3px solid transparent; 
+    }
+}
+.label_date  {
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    color: rgba(255, 255, 255, 0.775);
+    background-color: transparent;
+    width: 40dvh; 
+    position: relative;
+    bottom: 87px;
+    left: -15dvh;
+    align-items: center;
+    word-spacing: normal;
+    font-size: 1.8dvh; 
+    text-shadow: solid 1px 1px;
+    &:hover{
+        border: none none;
+    }
+    &:focus {
+        border: 3px solid transparent; 
+    }
+}
+.input_date  {
+    box-sizing: border-box;
+    border: 3px solid transparent; 
+    transition: 0.5s;
+    outline: none;
+    color: rgba(255, 255, 255, 0.775);
+    background-color: transparent;
+    width: 40dvh;
+    position: relative;
+    bottom: 114px;
+    left: -6dvh;
+    word-spacing: normal;
+    font-size: 1.9dvh; 
+    text-shadow: solid 1px 1px;
+    &:hover{
+        border: none none;
+    }
+    &:focus {
+        border: 3px solid transparent; 
+    }
+}
+
+.img_card  {
+    box-sizing: border-box;
+    border: 1px thick ; 
+    transition: 0.5s;
+    outline: none;
+    color: rgba(255, 255, 255, 0.775);
+    background-color: rgba(255, 255, 255, 0.596);
+    width: 10dvh;
+    height: 6dvh;
+    position: relative; 
+    bottom: 39dvh;
+    left: 17dvh; 
+    
+    font-family: courier;
+    &:hover{
+        border: none none;
+    }
+    &:focus {
+        border: 3px solid transparent; 
+    }
+}
+.img_size{
+    position: relative;
+    bottom: 2dvh;
+    width: 250dvh; height: 6.5dvh;
+}
+
+.input_ccv  {
+    box-sizing: border-box;
+    border: 3px solid transparent; 
+    transition: 0.5s;
+    outline: none;
+    color: rgba(255, 255, 255, 0.775);
+    background-color: transparent;
+    width: 40dvh;
+    position: relative;
+    bottom: 114px;
+    left: 2.4dvh;
+    word-spacing: normal;
+    font-size: 2.8dvh; 
+    text-shadow: solid 1px 1px;
+    &:hover{
+        border: none none; 
+    }
+    &:focus {
+        border: 3px solid transparent;  
+    }
+}  
+ 
+
+.icon_set{
+    font-size: 50px;
+    bottom: 2.7dvh; 
+    position: relative; 
+    color: transparent;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.575);;
+    opacity: 50; /* Firefox */
+  }

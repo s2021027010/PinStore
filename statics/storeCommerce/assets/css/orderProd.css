@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+
+body{
+  background: url('http://all4desktop.com/data_images/original/4236532-background-images.jpg');
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #262626;
+  margin: 5% 0;
+}
+.container{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 1200px)
+{
+  .container{
+    max-width: 1140px;
+  }
+}
+.d-flex{
+  display: flex;
+  flex-direction: row;
+  background: #f6f6f6;
+  border-radius: 0 0 5px 5px;
+  padding: 25px;
+}
+div .firm{
+  flex: 4;
+}
+.Yorder{
+  flex: 2;
+}
+.title{
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));
+  background: -moz-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: -ms-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: -o-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);
+  border-radius: 3px 3px 0 0 ;
+  padding: 10px;
+  color: #f6f6f6;
+}
+h2{
+  margin: 0;
+  padding-left: 15px; 
+}
+.required{
+  color: red;
+} 
+select{
+  width: 72%;
+  height: 45px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+.Yorder{
+  margin-top: 15px;
+  height: 600px;
+  padding: 20px;
+  border: 1px solid #dadada;
+}
+table{
+  margin: 0;
+  padding: 0;
+}
+th{
+  border-bottom: 1px solid #dadada;
+  padding: 10px 0;
+}
+tr>td:nth-child(1){
+  text-align: left;
+  color: #2d2d2a;
+}
+tr>td:nth-child(2){
+  text-align: right;
+  color: #52ad9c;
+}
+td{
+  border-bottom: 1px solid #dadada;
+  padding: 25px 25px 25px 0;
+}
+ 
+.Yorder>div{
+  padding: 15px 0; 
+}
+
+button{
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background: #52ad9c;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+}
+button:hover{
+  cursor: pointer;
+  background: #428a7d;
+}
+
+
+
+
+
+
+
+
+
+
+ 
+.launch{height: 50px}
+.close{font-size: 21px;cursor: pointer}
+.modal-body{height: 450px}
+.nav-tabs{border:none !important}
+.nav-tabs .nav-link.active{color: #495057;background-color: #fff;border-color: #ffffff #ffffff #fff;border-top: 3px solid blue !important}
+.nav-tabs .nav-link{margin-bottom: -1px;border: 1px solid transparent;border-top-left-radius: 0rem;border-top-right-radius: 0rem;border-top: 3px solid #eee;font-size: 20px}
+.nav-tabs .nav-link:hover{border-color: #e9ecef #ffffff #ffffff}
+.nav-tabs{display: table !important;width: 100%}
+.nav-item{display: table-cell}
+.form-control{border-bottom: 1px solid #eee !important;border:none;font-weight: 600}
+.form-control:focus{color: #495057;background-color: #fff;border-color: #8bbafe;outline: 0;box-shadow: none}
+.inputbox{position: relative;margin-bottom: 20px;width: 100%}
+.inputbox span{position: absolute;top:7px;left: 11px;transition: 0.5s}
+.inputbox i{position: absolute;top: 13px;right: 8px;transition: 0.5s;color: #3F51B5}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{-webkit-appearance: none;margin: 0}
+.inputbox input:focus~span{transform: translateX(-0px) translateY(-15px);font-size: 12px}
+.inputbox input:valid~span{transform: translateX(-0px) translateY(-15px);font-size: 12px}
+.pay button{height: 47px;border-radius: 37px}
