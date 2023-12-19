@@ -140,8 +140,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 's2021027010@umt.edu.pk' # 'PinStore_Project.demo.django.login@gmail.com' 
-EMAIL_HOST_PASSWORD = 'Arshad@2020'
+EMAIL_HOST_USER = 'your email' # 'PinStore_Project.demo.django.login@gmail.com' 
+EMAIL_HOST_PASSWORD = 'your email password'
 
 NG = ""
 LOCAL_HOST_STRIPE_Auth = 'http://localhost:8000/Auth'
@@ -151,9 +151,9 @@ LOCAL_HOST_STRIPE_NG = NG + '/Auth/logIn'
 
 
 # ------------------ Stripe integration -------------------
-STRIPE_PUBLIC_KEY = "pk_test_51MDkyQDUzRcdw0ai84xqLsFylb0EVMCnP4Qv9y3NeW219gwQifI696lrqejOacOFEVO5bbIa3Zxd9bi5k7ON0sc200KlqO6jNm"
-STRIPE_SECRET_KEY = "sk_test_51MDkyQDUzRcdw0aicbwC0jW25KusolDM0SPjbQxAau6bNtF097hPBYrS296qBWJMG8TqQbNCivSB21jUx3vClUjd00bAoD7Dwn"
-STRIPE_WEBHOOK_SECRET = "whsec_16d956fc793dd97e959535078ee4924688e48ba300703d002cef4346b27e10a2"
+STRIPE_PUBLIC_KEY = "pk_test_******QDUzRcdw0ai84xqLsFylb0EVMCnP4Qv9y3NeW219gwQifI696lrqejOacOFEVO5bbIa3Zxd9bi5k7ON0sc200KlqO6***"
+STRIPE_SECRET_KEY = "sk_test_******QDUzRcdw0aicbwC0jW25KusolDM0SPjbQxAau6bNtF097hPBYrS296qBWJMG8TqQbNCivSB21jUx3vClUjd00bAoD7***"
+STRIPE_WEBHOOK_SECRET = "whsec_******fc793dd97e959535078ee4924688e48ba300703d002cef4346b27e1***"
 
 
 # Default primary key field type
