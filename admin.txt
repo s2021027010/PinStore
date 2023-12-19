@@ -1,6 +1,6 @@
-username : s2021027010@umt.edu.pk
-email :s2021027010@umt.edu.pk
-password : umt@2020
+username : "your username like email superuser"
+email : "your email  superuser"
+password : "your superuser password"
 
 
 ngrok tun >> ngrok http 8000
