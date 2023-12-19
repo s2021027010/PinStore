@@ -1,0 +1,313 @@
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile </title>
+<meta name="keywords" content="HTML5 Template">
+<meta name="description" content="Pin Store">
+<meta name="author" content="p-themes"> 
+<meta name="apple-mobile-web-app-title" content="Pin Store">
+<meta name="application-name" content="Pin Store">
+<meta name="msapplication-TileColor" content="#cc9966">
+<meta name="theme-color" content="#ffffff">
+{% load static %}    
+<style>
+</style>
+
+<link rel="stylesheet" href="{% static 'storeCommerce/assets/css/profile.css' %}">  
+<link rel="stylesheet" href="{% static 'storeCommerce/assets/css/image.scss' %}">  
+<link rel="stylesheet" href="{% static 'storeCommerce/assets/css/editBtn.css' %}"> 
+<link rel="stylesheet" href="{% static 'storeCommerce/assets/css/card.css' %}">  
+<link rel="stylesheet" href="{% static 'storeCommerce/assets/css/receiptProfile.css' %}">
+{% block content %}
+{% if user.is_authenticated %}
+{% include 'header.html' %} 
+</header>
+<div class="container " >
+    <div class="header-left "> 
+        <div class="container">
+            <div class="profile-header">
+              <div class="profile-img">   
+               
+              
+<div class="wrapper">
+{% if user.is_staff %}
+ 
+<div class="box">
+  <img src="" name="image_Profile" alt="Profile Image" class="js--image-preview" />
+  <div class="upload-options"> 
+        <label><input type="file"  name="image_Profile" class="image-upload" accept="image/*" /></label>  
+  </div>
+</div> 
+{% else %}
+  <form action="{% url 'profile' %}"  method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="box">
+    <img src="{{BASE_DIR}}/Auth/media/{{view_Profile_detail.db_photo}}" id="imgHide" name="image_Profile" width="250" alt="Profile Image"  />
+    <img  alt="Profile Image" hidden id="imgHide2" class="js--image-preview" />
+    <div class="upload-options">
+          <label><input type="file"  id="btnHide" name="image_Profile" class="image-upload" accept="image/*" /></label>
+          <input  type="text" hidden value="{{view_Profile_detail.db_bio}}" name="bio_edit" hidden class="form-control" /> 
+          <input  type="text" hidden value="{{user.email}}" name="email_image" hidden class="form-control" />
+         <!-- <input  type="text" hidden value="{{view_Profile.id}}" name="id_image" hidden class="form-control" />  -->
+        
+    </div>
+  </div>
+   
+    <button type="submit" title="clcik me to save file!" hidden id="btn-img-edit" class="btn-img-edit">
+        <span class="material-symbols-outlined">edit</span>
+    </button>  
+</form>
+
+{% endif %}
+  </div>
+                
+            </div>
+              <div class="profile-nav-info">
+                <h3 class="user-name">{{user.first_name}} {{user.last_name}}</h3>
+                <div class="address">
+                  <p id="state" class="state">
+                    {% if user.is_staff %}
+                    Manager
+                    {% else %}
+                    {{view_Profile.db_gender}} ,
+                    {% endif %} </p>
+                  <span id="country" class="country">{{view_Profile.db_country}}.</span>
+                </div>
+                
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+          
+              </div>
+              <div class="profile-option">
+                <div class="notification">
+                    <i class="IconRed material-symbols-outlined">notifications</i>
+                  <span class="alert-message">3</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="main-bd">
+              <div class="left-side">
+                <div class="profile-side">
+                  <p class="mobile-no"><i class="IconRed material-symbols-outlined">call</i>
+                    {% if user.is_staff %}
+                    Active Staff
+                    {% else %}
+                    {{view_Profile.db_phoneNumber}}
+                    {% endif %}
+                </p>
+                  <p class="user-mail"><i class="IconRed material-symbols-outlined">email</i> {{user.email}}</p>
+                  {% if user.is_staff %}
+                  <p class="user-mail"><i class="IconRed material-symbols-outlined">done_all</i>All Permission</p>
+                    {% else %}
+                    <p class="user-mail"><i class="IconRed material-symbols-outlined">calendar_month</i> {{view_Profile.db_date_DoB}}</p>
+                    {% endif %} 
+                  <div class="user-bio"> 
+                    <h3>Bio</h3>
+                    <p class="bio">
+                      {% if user.is_staff %}
+                      Active Superuser 
+                      {% else %}
+                      <form action="{% url 'profile' %}"  method="post"  enctype="multipart/form-data">
+                        {% csrf_token %}  
+                        <textarea  type="text" value="{{view_Profile_detail.db_bio}}"  name="bio_edit" class="form-control" >{{view_Profile_detail.db_bio}}</textarea>
+                        <label><input type="file" hidden  name="image_Profile" aria-valuetext="{{view_Profile_detail.db_photo}}" aria-label="{{view_Profile_detail.db_photo}}" /></label>
+                        <input  type="text" hidden value="{{user.email}}" name="email_image" hidden class="form-control" /> 
+                             
+                        <button type="submit" id="btn-bio-edit" class="btn-bio-edit"> 
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>  
+                    </form> 
+
+                    {% endif %}
+                    </p>
+                  </div>
+                  
+                  <div class="profile-btn">
+                   <!-- <button class="createbtn" id="Create-post"><i class="material-symbols-outlined">create</i>Create</button>
+                   -->
+                  </div>
+                  <div class="user-rating">
+                    <h3 class="rating">Review</h3>
+                    <div class="rate">
+                      <div class="star-outer">
+                        <div class="star-inner"> 
+                        </div>
+                      </div>
+                      <b class="no-of-user-rate">last login : <b> 
+                        {{user.date_joined}} 
+                    </span></span>
+                    </div>
+           </div>
+           </div>
+           </div>
+
+
+
+
+
+
+
+
+
+
+         
+         {% if user.is_staff %}
+              <h2> All Permission Granted !</h2>
+
+              {% else %}
+              <h3>Order History</h3> 
+              <div class="row">
+              {% for order in obj_order%}
+              {% for Product in view_Product %}
+              {% if  Product.db_Product_ID == order.product_id_order  %}
+
+               <div class="col-md-4" style="max-width: 44dvh;">
+              
+              <div id="invoice-POS"> 
+                <center id="top">
+                  <div class="info"> 
+                    <h2>{{Product.db_Product_Name}}</h2>
+                    <p> {{order.appartment_order}}, {{order.street_address_order}} , {{order.city_address_order}}</p>
+                    <p> {{order.state_order}} , {{order.country_order}} </p>
+                  </div>
+                </center>
+                
+                <div id="mid">
+                  <div class="info">
+                    <table>
+                          <tr>
+                              <td>Order Id:</td>
+                              <td>{{order.id}}</td>
+                          </tr>
+                          <tr>
+                              <td>Customer Name:</td>
+                              <td>{{order.fname_order}} {{order.lname_order}}</td>
+                          </tr>
+                          <tr>
+                              <td>Phone Number:</td>
+                              <td>{{order.phone_order}}</td>
+                          </tr>
+                          <tr>
+                              <td>Email :</td>
+                              <td>{{order.email_order}}</td>
+                          </tr>
+                          
+                          <tr>
+                            <td>Cash On :</td>
+                            <td>{{order.cash_on}}</td>
+                        </tr>
+                        <tr>
+                          <td>Status :</td>
+                          <td>{{order.status_order}}</td>
+                      </tr>
+                      <tr>
+                          <td>Date :</td>
+                          <td>{{order.created_at}}</td>
+                      </tr>
+            </table>
+            
+                  </div>
+                </div><!--End Invoice Mid-->
+                
+                <div id="bot">
+            
+                      <div id="table">
+                        <table>
+                          <thead>
+                          <th>Product Items</th>
+                            <th>Qty</th>
+                            <th>Rate</th>
+                            <th>Total</h>
+                            </thead>
+                                        <tbody>
+                                          <tr class="service">
+                                            <td>{{Product.db_Product_Type}}</td>
+                                            <td>{{order.quantity_order}}</td>
+                                            <td>${{Product.db_Product_Price}}</td>
+                                            <td>${{order.price_order}}</td>
+                                          </tr>
+                            </tbody>
+                            </table>
+                            <table>
+                                <tr class="total-section">
+                                    <td>Subtotal :</td>
+                                    <td>${{order.price_order}}</td>
+                                </tr>
+                                <tr class="total-section">
+                                    <td>Gst</td>
+                                    <td>$0</td>
+                                </tr>
+                                <tr class="total-section">
+                                    <td>Discount:</td>
+                                    <td>$0</td>
+                                </tr>
+                                
+                            </table>
+                        <table>
+                            <tr class="total-section">
+                                <td>Grand Total:</td>
+                              <td>${{order.price_order}}</td>
+                            </tr>
+                            
+                        </table>
+                  </div>
+                    <div class="legalcopy">
+                        <div class="fassainumber">
+                          <p ><img src="{% static 'storeCommerce/assets/images/logos/logoName.png' %}"  alt="Pin Logo" style="position: relative; bottom: 0.7dvh;  right: 0.2dvh;" width="55" height="30">
+                              Lic <p>No.12345678912345</p></p>
+                        </div>
+                        
+                        <p>Thanks & Visit again</p>
+                      </div>
+                      <div class="legalcopy">
+                        <div class="fassainumber">
+                          <p >Powered by <img src="{% static 'storeCommerce/assets/images/logos/logoName.png' %}"  alt="Pin Logo" style="position: relative; bottom: 0.7dvh; right: 0.2dvh;" width="55" height="30"></p>
+                        </div>
+                      </div> 
+                </div>  
+                    <button id="printButton" class="chatBtn">Print Invoice</button>
+                  </div>   
+              </div> 
+              {% endif %}
+              {% endfor %}
+          {% endfor %}
+          
+
+
+        </div>
+
+
+              {% endif %}  
+          </div>
+</div></div></div>
+    </div> 
+    </div>
+{% include 'footer.html' %} 
+{% endif %}
+{% endblock %}
+
+
+<script src="{% static 'storeCommerce/assets/js/profile.js' %}"></script>
+<script src="{% static 'storeCommerce/assets/js/image.js' %}"></script>
+<script src="{% static 'storeCommerce/assets/js/receiptProfile.js' %}"></script>
+    
+<script>
+  const btn = document.getElementById('btnHide'); 
+  btn.addEventListener('click', () => {    
+  const box = document.getElementById('imgHide'); 
+   
+  box.style.display = 'none'; 
+  $("[id=imgHide2]").removeAttr("hidden");  
+  $("[id=btn-img-edit]").removeAttr("hidden");  
+
+});
+
+</script>
+ 

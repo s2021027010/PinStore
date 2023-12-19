@@ -1,0 +1,170 @@
+ 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View User {{title}}</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pin Store">
+    <meta name="author" content="p-themes"> 
+    <meta name="apple-mobile-web-app-title" content="Pin Store">
+    <meta name="application-name" content="Pin Store">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+    {% load static %}  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'Authentication/css/login/icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Authentication/css/login/style.css' %}"> 
+    
+    <link rel="stylesheet" href="{% static 'Authentication/css/login/mystyle.css' %}"> 
+
+    <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/ProdNav.css' %}">
+    <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/button.css' %}"> 
+    <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/tableAdmin.css' %}"> 
+ 
+    {% load static %}
+
+    {% block content %}
+    {% if user.is_authenticated %}
+    {% include 'header.html' %} 
+</header> 
+     
+    <div class="container">   
+       <div class="form-tab">  
+        <h4>Users Profile</h4>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+            <div class="tab-pane wrapper-view" id="login"  > 
+
+                <section class=" ">  
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-wrap">
+                                <table class="table ">
+                                  <thead>
+                                    <tr class="table-primary">
+                                      <th>User ID</th> 
+                                      <th>User<i class="textTrans">_</i>Image</th> 
+                                      <th>User Email</th>  
+                                      <th>User FirstName</th> 
+                                      <th>User LastName</th>
+                                      <th>Action<i class="textTrans">_</i>Button</th> 
+                                      <th>User Gender</th> 
+                                      <th>User Contact</th> 
+                                      <th>User Number</th> 
+                                      <th>User Date-of-Birth</th>  
+                                      <th>Activation<i class="textTrans">_</i>Check</th> 
+                                      <th>User Staff</th> 
+                                      <th>User Bio</th>  
+                                      <th>User Last-Login</th>     
+
+                                    </tr>
+                                  </thead>
+                                    
+                                  {% for used in Use_Users %}  
+                                  {% for data_User in view_User  %}
+                                  {% if used.email == data_User.char_email %}
+                                  
+                                  <tbody  class="tbhover">
+                                    <tr role=""> 
+                                      <td><textarea class="textstyle" readonly> {{data_User.auth_token}} </textarea></td>  
+                                      <td> 
+                                      {% for data_UserDetail in view_UserDetail %} 
+                                      {% if data_User.char_email == data_UserDetail.char_email %}
+                                      <img src="{{BASE_DIR}}/Auth/media/{{data_UserDetail.db_photo}}" class="imgstyle"   /> 
+                                      {% endif %}
+                                      {% endfor %}
+                                    </td> 
+                                      <td><textarea  class="textstyle" readonly>{{data_User.char_email}}</textarea> </td> 
+                                      <td><textarea class="textstyle" readonly> {{used.first_name}} </textarea></td> 
+                                      <td><textarea  class="textstyle" readonly> {{used.last_name}} </textarea></td>
+                                     
+                                      <td>
+                                        <div class="row">
+                                            <div class="col-md-4" >
+                                                <a  href="/store/update_User_byAdmin/{{data_User.char_email}}" class="btnBorder " title="Update"> <span class="IconRed material-symbols-outlined">edit_square</span></a> 
+                                             </div> 
+                                       
+                                            <div class="col-md-4"> 
+                                                <form  action="{% url 'delete_User_byAdmin' %} "  method="post"  enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <input type="text" hidden class="form-control" id="delet_email" value="{{data_User.char_email}}" name="delet_email" placeholder="Delete Id" required>
+                                                    <button  type="submit" class="btnBorder " title="delete"> <span class="IconRed material-symbols-outlined">delete</span></button> 
+                                                </form>
+                                        </div>
+                                        <div class="col-md-4"> 
+                                            <form  action="# "  method="post"  enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                <input type="text" hidden class="form-control" id="view_id" value="{{data_Product.db_Product_ID}}" name="view_id" placeholder="view_id" required>
+                                                <button  type="submit" class="btnBorder " title="View"> <span class="IconRed material-symbols-outlined">visibility</span></button> 
+                                            </form>
+                                        </div>  
+                                        </div>
+                                      </td><td><textarea class="textstyle" readonly> {{data_User.db_gender}}</textarea></td>
+                                      <td><textarea class="textstyle" readonly> {{data_User.db_country}}</textarea></td>
+                                      <td><textarea class="textstyle" readonly> {{data_User.db_phoneNumber}}</textarea></td>
+                                      <td><textarea   class="textstyle" readonly> {{data_User.db_date_DoB }} </textarea></td>
+                                      <td><textarea  class="textstyle" readonly> {{data_User.is_verified}} </textarea></td>
+                                      <td><textarea  class="textstyle" readonly> {{used.is_staff}} </textarea></td>
+                                      <td> 
+                                      {% for data_UserDetail in view_UserDetail %} 
+                                      {% if data_User.char_email == data_UserDetail.char_email %}
+                                      <textarea  class="textstyle" readonly> {{data_UserDetail.db_bio}} </textarea> 
+                                      {% endif %}
+                                      {% endfor %}
+                                    </td>
+                                      <td><textarea  class="textstyle" readonly> {{used.last_login}} </textarea></td>
+                                        </tr>  
+                                  </tbody> 
+ 
+                                  {% endif %}
+                                  {% endfor %} 
+                                  {% endfor %}  
+
+                                </table>
+                            </div>
+                        </div> 
+                </div>
+            </section>
+
+ 
+
+
+
+            </div>
+        </div>
+    </div> 
+
+
+    
+
+    {% include 'footer.html' %} 
+    {% endif %}
+    {% endblock %} 
+    
+    <script src="{% static 'storeCommerce/assets/js/AddProdNav.js' %}"></script>
+
+
+
+    <!-- 
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+    <script>
+
+        $(function() { $("#mod").on("click",function() {
+    if (this.innerText=="published_with_changes") { 
+        const box = document.getElementById('mod');
+      $("[id=title]").removeAttr("readonly");  
+      $("[id=show]").removeAttr("hidden");   
+      box.style.display = "none";
+       }  
+        $.post( function(data) { }) 
+          });
+        });
+        </script>
+
+        -->

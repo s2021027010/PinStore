@@ -1,0 +1,192 @@
+ <!--https://fonts.google.com/icons-->
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Admin Analysis</title>
+ <meta name="keywords" content="HTML5 Template">
+ <meta name="description" content="Pin Store">
+ <meta name="author" content="p-themes"> 
+ <meta name="apple-mobile-web-app-title" content="Pin Store">
+ <meta name="application-name" content="Pin Store">
+ <meta name="msapplication-TileColor" content="#cc9966">
+ <meta name="theme-color" content="#ffffff">
+ {% load static %}
+ 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/editBtn.css' %}"> 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/style.css' %}"> 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/board.css' %}">
+
+{% load custom_tag %}
+ {% block content %}
+ {% if user.is_authenticated %}
+ {% include 'header.html' %} 
+     </header> 
+       <div class="container " >
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %} 
+        <!--  >>>>>>>>>>>>>>>>>>>>     >>>>>>>     start    <<<<<<<<<   <<<<<<<<<<<<<<<<<<<<<  -->
+
+   
+ 
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-body">
+                    <div class="row">
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-c-yellow update-card">
+                            <div class="card-block">
+                                <div class="row align-items-end">
+                                    <div class="col-8">
+                                        <h4 class="text-white">{{contxt_obj_User|totalUser_count}}</h4>
+                                        <h6 class="text-white m-b-0">Total User</h6>
+                                    </div>
+                                    <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"  ></iframe>
+                                        <canvas id="update-chart-1" height="50" style="display: block; width: 91px; height: 50px;" width="91"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : {{dattime}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-c-green update-card">
+                            <div class="card-block">
+                                <div class="row align-items-end">
+                                    <div class="col-8"> 
+                                        <h4 class="text-white">$ {{contxt_db_Place_Order|totalEarn_count}} 
+                                            
+                                         </h4> 
+                                        <h6 class="text-white m-b-0">All Earnings</h6>
+                                    </div>
+                                    <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"   ></iframe>
+                                        <canvas id="update-chart-2" height="50" width="91" style="display: block; width: 91px; height: 50px;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update :
+                                    {% for orderPlace in contxt_db_Place_Order %}
+                                        {% if forloop.first and orderPlace.status_order == "Passed" %}
+                                     {{orderPlace.created_at}}
+                                     {% endif %}
+                                     {% endfor %}
+                                    
+                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-c-pink update-card">
+                            <div class="card-block">
+                                <div class="row align-items-end">
+                                    <div class="col-8">
+                                        <h4 class="text-white">{{contxt_db_Place_Order|orderPassedCC_count}}</h4>
+                                        <h6 class="text-white m-b-0">Sold on Credit Card</h6>
+                                    </div>
+                                <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"  ></iframe>
+                                    <canvas id="update-chart-3" height="50" width="91" style="display: block; width: 91px; height: 50px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : {{dattime}}</p>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-c-pinki update-card">
+                            <div class="card-block">
+                                <div class="row align-items-end">
+                                    <div class="col-8">
+                                        <h4 class="text-white">{{contxt_db_Place_Order|orderPassedCD_count}}</h4>
+                                        <h6 class="text-white m-b-0">Sold Cash-Delivery </h6>
+                                    </div>
+                                <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"  ></iframe>
+                                    <canvas id="update-chart-3" height="50" width="91" style="display: block; width: 91px; height: 50px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : {{dattime}}</p>
+                        </div>
+                        </div>
+                    </div>
+
+                    
+
+<div  style="border: 2px; background-color: transparent; padding: 8px 1px; max-height: 1px; width: 1300px;"></div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-c-lite-green update-card">
+                                <div class="card-block">
+                                    <div class="row align-items-end">
+                                        <div class="col-8">
+                                            <h4 class="text-white">{{contxt_db_Profile|ActiveUser_count}}</h4>
+                                            <h6 class="text-white m-b-0">Verified User</h6>
+                                        </div>
+                                    <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"   ></iframe>
+                                        <canvas id="update-chart-4" height="50" width="91" style="display: block; width: 91px; height: 50px;"></canvas>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : {{dattime}}</p>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-c-yellowi update-card">
+                                <div class="card-block">
+                                    <div class="row align-items-end">
+                                        <div class="col-8">
+                                            <h4 class="text-white">{{contxt_db_Place_Order|orderCancel_count}}</h4>
+                                            <h6 class="text-white m-b-0">Order Cancel</h6>
+                                        </div>
+                                        <div class="col-4 text-right"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"  ></iframe>
+                                            <canvas id="update-chart-1" height="50" style="display: block; width: 91px; height: 50px;" width="91"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : {{dattime}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+
+
+
+
+
+</div>
+ {% include 'footer.html' %}
+
+
+ {% endif %}
+ {% endblock %}
+
+

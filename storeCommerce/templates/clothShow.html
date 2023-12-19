@@ -1,0 +1,74 @@
+ <!--https://fonts.google.com/icons-->
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Cloth Show{{title}}</title>
+ <meta name="keywords" content="HTML5 Template">
+ <meta name="description" content="Pin Store">
+ <meta name="author" content="p-themes"> 
+ <meta name="apple-mobile-web-app-title" content="Pin Store">
+ <meta name="application-name" content="Pin Store">
+ <meta name="msapplication-TileColor" content="#cc9966">
+ <meta name="theme-color" content="#ffffff">
+ {% load static %}
+ 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/editBtn.css' %}"> 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/style.css' %}">
+
+{% load custom_tag %}
+ {% block content %}
+ {% if user.is_authenticated %}
+ {% include 'header.html' %} 
+     </header> 
+       <div class="container " >
+        <h4> <span class="material-symbols-outlined">apparel</span> Cloth  </h4>
+         <div class="header-left  ">  
+             <div class="container row">  
+                {% for prod in view_Product %}
+                {% for cloth in view_Cloth %}
+                {% if forloop.last %}
+                {% for img in view_Image %}
+                {% if prod.db_Product_ID == img.db_Image_ID %}
+                     <div class=" wrapper-home"   >    
+                       <div class="table-wrap">
+                        <div class="row"> 
+                          <div class="col-md-12">
+                           <img src="{{BASE_DIR}}/Auth/media/{{img.db_Product_photo}}" class=" home-box-image" id="input_img"  name="input_img" aria-label="" />
+                        </div>
+                        <div class="col-md-10">
+                          <form action="{% url 'wishlist' %}"  method="post"  enctype="multipart/form-data">
+                            {% csrf_token %} 
+                            <input value="/clothShow/" name="wish_backAddress" class="form-control" hidden>
+                            <input value="{{prod.db_Product_ID}}"  title="click to do Wishlist"  name="wishlist_ID" class="form-control" hidden>
+                            <div class = "purchase-info posit" > 
+                               
+                            <button type= "submit" class="wishbtn"  title="click to add Wishlist"  > 
+                              <span class="material-symbols-outlined">{{prod.db_Product_ID|email:user.email}}</span>
+                            </button> 
+                            </div>
+                          </form>
+                        </div>
+                        </div>
+                       <p><label class="name"><b>{{prod.db_Product_Name}}</b></label></p> 
+                          <p><label class="price"><b>Price : </b> ${{prod.db_Product_Price}} </label> </p>
+                          <p><label class="type"><b>Type : </b> {{prod.db_Product_Type}} </label> </p>
+                           <p> <label class="cate"><b>Category : </b> {{prod.db_Product_Category }}</label> </p>
+                           <p><a href="/store/fullView/{{prod.db_Product_ID}}" type="button" class="view-button"><b>View</b></a></p>
+                       </div>  
+                     </div> 
+                     {% endif %}
+                     {% endfor %}
+                     {% endif %}
+                     {% endfor %}
+                   {% endfor %} 
+
+             </div>  
+         </div>
+       </div>
+ {% include 'footer.html' %}
+
+
+ {% endif %}
+ {% endblock %}
+
+

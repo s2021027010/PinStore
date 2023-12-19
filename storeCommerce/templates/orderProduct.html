@@ -1,0 +1,145 @@
+ <!--https://fonts.google.com/icons-->
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Order Product {{title}}</title>
+ <meta name="keywords" content="HTML5 Template">
+ <meta name="description" content="Pin Store">
+ <meta name="author" content="p-themes"> 
+ <meta name="apple-mobile-web-app-title" content="Pin Store">
+ <meta name="application-name" content="Pin Store">
+ <meta name="msapplication-TileColor" content="#cc9966">
+ <meta name="theme-color" content="#ffffff">
+ {% load static %} 
+ <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+ 
+ <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+ <script src="https://js.stripe.com/v3/"></script> 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/orderProd.css' %}">   
+
+ {% block content %}
+ {% if user.is_authenticated %}
+ {% include 'header.html' %} 
+<div class="container">
+    <div class="title">
+        <h3>Product Order Form</h3>
+    </div>
+    <div class="modal-body data_body"> 
+      <div class="tabs mt-3"> 
+       <ul class="nav nav-tabs"  id="myTab" role="tablist"> 
+         <li class="nav-item" class="btn" role="presentation"> 
+         <a class="nav-link active " id="credit-tab" data-toggle="tab" href="#credit" role="tab" aria-controls="credit" aria-selected="true"> 
+           Credit Card 
+         </a> 
+         </li> 
+         <li class="nav-item"  class="btn"  role="presentation"> <a class="nav-link" id="delivery-tab" data-toggle="tab" href="#delivery" role="tab" aria-controls="delivery" aria-selected="false"> 
+           Cash on Delivery </a> 
+         </li> 
+     </ul> 
+
+     
+  <div class="d-flex">
+     <div class="tab-content data_body" id="myTabContent"> 
+        <div class="tab-pane fade show active" id="credit" role="tabpanel" aria-labelledby="credit-tab">
+          <form action="{% url 'create-checkout-session' view_Product.db_Product_ID %}"  method="post"  enctype="multipart/form-data">
+            {% csrf_token %} 
+           
+          {% include 'ProdOrderForm.html' %}
+          
+          <div class="px-5 mt-5">  
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/513985/cc-back-bg-new.png"  id="imgShow"  class="backImg"/>
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/513985/cc-front-bg.png" id="imgHide" class="frontImg"/>
+            </div>
+            <div class="row">
+              <div class="col-sm-4"> 
+                <input  maxlength="19" type="input_number"  name="card_number"  class="input_number"  id="inputShow"  oninvalid="setCustomValidity('Please enter ATM number.')" onchange="try{setCustomValidity('')}catch(e){}"   onkeypress='return (event.charCode >= 31 && event.charCode <= 33) || (event.charCode >= 48  && event.charCode <= 57) '  placeholder="Card Number" />
+                <!--
+                <input   type="text"  oninvalid="setCustomValidity('Please enter ATM number.')" onchange="try{setCustomValidity('')}catch(e){}"  name="card_number"  class="input_number"  id="inputShow" pattern="[0-9]{4}\s+[0-9]{3}\s+[0-9]{3}"    onkeypress='return (event.charCode >= 31 && event.charCode <= 33) || (event.charCode >= 48  && event.charCode <= 57) '  placeholder="Card Number" />
+                <input maxlength="16" type="input_number"  pattern="[0-9]{5}\s+[0-9]{3}\s+[0-9]{3}" id="input_number" onkeypress='return event.charCode >= 48 && event.charCode <= 57  && event.charCode >= 32' placeholder="Card Number"  class="input_number" />
+               -->
+              </div>
+              
+              <div  class="col-sm-4"  id="inputShow" >  
+                 
+                <input placeholder="HOLDER NAME"  id="inputShow"    class="label_name" readonly  />
+                <input placeholder="Arshad Ali"   name="card_name"    id="inputShow"     class="input_name"  required />
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/513985/visa.svg"  value="visa" placeholder=" "  id="inputShow"   type="image" class="img_card" readonly />
+                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/513985/amex.svg" hidden value="visa" placeholder=" "  id="inputShow"   type="image" class="img_card" readonly />
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/513985/mastercard.svg" hidden value="visa" placeholder=" "  id="inputShow"   type="image" class="img_card" readonly />
+                 <!-- 
+                <img src="https://s3-us-west-2.amazonaws.com "  class="img_size" /> 
+                  <span  type="image" class="icon_set material-symbols-outlined">credit_card</span>  --> 
+              </div>
+               
+              <div  class="col-sm-4">  
+                <input  id="inputShow"  placeholder="Exp. Date:" class="label_date" readonly /> 
+                <input  maxlength="5" id="inputShow"    name="card_expDate"    type="input_date"   placeholder="MM/YY"   onkeypress='return event.charCode >= 47 && event.charCode <= 57'  class="input_date"  required />
+                <input  maxlength="3"  type="input_ccv"   name="card_ccv"    placeholder="CVV" id="btnShow"  onkeypress='return event.charCode >= 47 && event.charCode <= 57'  class="input_ccv" required  />
+              </div>
+            </div>
+            <input hidden value="Pay by Credit Card" name="cash_On_order">
+          </div>  
+          </div>
+          <div class="pay px-5 "> 
+            <button type="submit" class="mybtn btn-block  ">Add credit</button> 
+          </div>
+        </form>
+   
+        </div> 
+ 
+      <div class="tab-pane fade" id="delivery" role="tabpanel" aria-labelledby="delivery-tab"> 
+        <form action="{% url 'orderProduct' view_Product.db_Product_ID %}"  method="post"  enctype="multipart/form-data">
+          {% csrf_token %} 
+        {% include 'ProdOrderForm.html' %} 
+                  <div class="mt-4 mx-4"> 
+                    <div class="text-center"> 
+                    <h5>Cash on Delivery</h5> 
+                    </div> 
+                      <div class="form mt-3"> 
+                        <div class="inputbox">
+                          <div class="custom-control custom-checkbox">
+                            <input hidden value="Cash on Delivery" name="cash_On_order">
+                            <input type="checkbox" class="custom-control-input" id="register-policy" required>
+                            <label class="custom-control-label" for="register-policy">I agree to the <a style="color: cornflowerblue;">Cash on Delivery</a> *</label>
+                        </div>   
+                      </div> 
+                    </div>
+                  </div>
+      </div>  
+      </div>
+              
+      <div class="pay px-5 "> 
+        <button  type="submit"  class="mybtn btn-block  ">submit</button> 
+      </div> 
+      </form>
+  </div> 
+</div>
+</div>
+      </div></div></div> 
+<script src="{% static 'storeCommerce/assets/js/card.js' %}"></script>
+        
+
+
+<script>
+  const btn = document.getElementById('btnHide');  
+  const boxshow = document.getElementById('imgShow');
+  const inputSh = document.getElementById('inputShow'); 
+  boxshow.style.display = 'none';
+  btn.addEventListener('click', () => {    
+  const box = document.getElementById('imgHide'); 
+   
+  inputSh.style.display = 'none';
+  box.style.display = 'none';  
+  boxshow.style.display = 'block';
+});
+   
+
+</script>
+ 
+
+
+{% include 'footer.html' %}
+
+  {% endif %}
+  {% endblock %}

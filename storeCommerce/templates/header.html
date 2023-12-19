@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- header.html  22 Nov 2019 10:04:03 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header {{title}}</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Pin Store">
+    <meta name="author" content="p-themes"> 
+    <meta name="apple-mobile-web-app-title" content="Pin Store">
+    <meta name="application-name" content="Pin Store">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Favicon      //  https://www.w3schools.com/icons/fontawesome5_icons_arrows.asp  -->
+    {% load static %}  
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+ <link rel="apple-touch-icon" sizes="180x180" href="{% static 'storeCommerce/assets/images/icons/apple-touch-icon.png' %}">
+ <link rel="icon" type="image/png" sizes="32x32" href="{% static 'storeCommerce/assets/images/icons/favicon-32x32.png' %}">
+ <link rel="icon" type="image/png" sizes="16x16" href="{% static 'storeCommerce/assets/images/icons/favicon-16x16.png' %}">
+ <link rel="manifest" href="{% static 'storeCommerce/assets/images/icons/site.html' %}">
+ <link rel="mask-icon" href="{% static 'storeCommerce/assets/images/icons/safari-pinned-tab.svg' %}" color="#666666">
+ <link rel="shortcut icon" href="{% static 'storeCommerce/assets/images/icons/favicon.ico' %}"> 
+ <meta name="msapplication-config" content="{% static 'storeCommerce/assets/images/icons/browserconfig.xml' %}"> 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/vendor/css/line-awesome.min.css' %}">
+ 
+ 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/owl.carousel.css' %}">
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/magnific-popup.css' %}">
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/jquery.countdown.css' %}">
+ {% load static %}
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/bootstrap.min.css' %}">
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/style.css' %}">
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/skin-demo-2.css' %}">
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/demo-2.css' %}"> 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/icons.css' %}">
+  
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/MenuNav.css' %}">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+ 
+
+</head>
+
+
+<body>
+    
+    {% block content %}
+    {% if user.is_authenticated %}
+
+
+ 
+  <div class="page-wrapper ">
+      <header class="header header-2  header-intro-clearance"> 
+          <div class="header-middle ">
+              <div class="container ">
+                  <div class="header-left ">  
+                      
+                      <a href="{% url 'home' %}" style="position: absolute;" class=" header-left">
+                        <img src="{% static 'storeCommerce/assets/images/logos/logo.png' %}"  alt="Pin Logo" width="105" height="25">
+                   </a>
+                  </div><!-- End .header-left -->
+
+                  <div class="header-center">
+                      <div class="header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block">
+                          <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                          <form action="{% url 'search' %}" method="get"> 
+                              <div class="header-search-wrapper search-wrapper-wide">
+                                <div name="category" class="" style="position: relative; width: 39dvh;"> 
+                                  <select id="options"  name="category"  class="selectdata custom-select" required>
+                                      <option id="category" name="category" value="All" selected>All Category</option>
+                                      <option id="category" name="category" value="Mobile">Mobile</option> 
+                                      <option id="category" name="category" value="Computer" >Computer</option> 
+                                      <option id="category" name="category" value="Cloth">Cloth</option> 
+                                      <option id="category" name="category" value="Shoes">Shoes</option>  
+                                      <option id="category" name="category" value="Tv">T.V</option> 
+                                      <option id="category" name="category" value="Watch">Watch</option> 
+                                      <option id="category" name="category" value="Accessories">Accessories</option>
+                                      </select>
+                                  </div>
+                                  <label for="search" class="sr-only">Search</label> 
+                                  <input type="search" class="form-control" name="search" id="search" placeholder="Search product ..." required>
+                                 <button class="btn btn-primary" type="submit"> <b><span class="material-symbols-outlined">search</span></b> </button> 
+                              </div><!-- End .header-search-wrapper -->
+                          </form>
+                      </div><!-- End .header-search -->
+                  </div>
+
+                  <div class="header-right"> 
+                      {% if user.is_staff %}
+                      <div class="dropdown cart-dropdown">
+                        <a href="{% url 'view_Product_admin' %}" class="dropdown-toggle" role="button" >
+                            <div class="icon">
+                              <span class="material-symbols-outlined">visibility</span>
+                            </div>   
+                          <p><b>View Product</b></p> 
+                        </a>   
+                    </div><!-- End .cart-dropdown -->
+                      <div class="dropdown cart-dropdown">
+                        <a href="{% url 'mobile_Product_admin' %}" class="dropdown-toggle" role="button" >
+                            <div class="icon">
+                              <span class="material-symbols-outlined">list_alt_add</span>
+                            </div>   
+                          <p><b>Add Product</b></p> 
+                        </a>   
+                    </div><!-- End .cart-dropdown -->
+
+                    {% else %}
+                    <div class="wishlist dropdown">
+                      <a href="{% url 'wishlist' %}" title="Wishlist">
+                          <div class="icon">
+                              <span class="material-symbols-outlined">shopping_cart</span>
+                              <span class="wishlist-count badge">
+                                 {% load custom_tag %}
+                                 {{count_Wish.db_Wishlist_email|wish_count}}   
+                              </span>
+                          </div>
+                          <p><b>Wishlist </b></p>
+                      </a> 
+                      <div class="dropdown-content">
+                        
+                    {% for wish in view_Wish %} 
+                    {% for prod in wish_View_Product %}
+                    {% if prod.db_Product_ID == wish.db_Wishlist_ID and wish.db_Wishlist_email == user.email %}
+                        
+                      <div class="row row_hov">
+
+                            <div class="col-sm-2"> 
+                              {% for img in wish_View_Image %}
+                              {% if img.db_Image_ID == wish.db_Wishlist_ID and wish.db_Wishlist_email == user.email %}
+                                <img src="{{BASE_DIR}}/Auth/media/{{img.db_Product_photo}}" class="img_wish"  />
+                              {% endif %}
+                              {% endfor %}
+                            </div>
+                            <div class="col-sm-4 ind_spc"> 
+                              <b>{{prod.db_Product_Name}}</b>
+                            </div>
+                            <div class="col-sm-4 ind_spc"> 
+                              <span> {% if prod.db_Product_Category == "Accessories" %} 
+                                {% for access in wish_view_Access  %} 
+                                {% if prod.db_Product_ID == access.db_Access_ID  %}
+                                    {{access.db_Access_Category }} 
+                                {% endif %}
+                                {% endfor %} 
+                                {% else %}  
+                                {{prod.db_Product_Category }}  
+                                {% endif %} </span>
+                            </div>
+                            <div class="col-sm-2 ind_spc" >
+                              <div class="row"> 
+                              <a href="/store/fullView/{{prod.db_Product_ID}}" title="Display" type="button" class=" "><span class="material-symbols-outlined">visibility</span></a> 
+                            
+                              <form action="{% url 'wishlist' %}"  method="post"  enctype="multipart/form-data">
+                                {% csrf_token %} 
+                                <input value="/home/" name="wish_backAddress" class="form-control" hidden>
+                                <input value="{{prod.db_Product_ID}}"  title="click to do Wishlist"  name="wishlist_ID" class="form-control" hidden>
+                                <div class = "purchase-info"> 
+                                    
+                                <button type= "submit"   title="click to remove" style=" bottom: 0;border: none;  color: green; background-color: transparent; background: none;" class="plus-btn "> 
+                                    <span class="material-symbols-outlined">close</span>
+                                </button>
+                                
+                                </div>
+                                </form>
+                            </div>
+                            </div>
+
+                      </div> 
+                      <div class="space-index"></div>
+                          
+                    {% endif %} 
+                    {% endfor %} 
+                    {% endfor %} 
+                      </div>
+                        
+                        
+                      </div>  
+                    {% endif %}
+                    <div class="account">
+                      <a href="{% url 'profile' %}" title="{{user.email}}">
+                          <div class="icon">
+                            <span class="material-symbols-outlined">account_circle</span>
+                          </div>
+                          <p><b>Profile</b></p>
+                      </a>
+                  </div><!-- End .compare-dropdown -->
+                      <div class="dropdown cart-dropdown">
+                          <a href="{% url 'lgOut' %}" class="dropdown-toggle" role="button" >
+                              <div class="icon">
+                                <span class="material-symbols-outlined">logout</span>
+                              </div>   
+                            <p><b>Log Out</b></p>
+                            
+                          </a> 
+                          
+                      </div><!-- End .cart-dropdown -->
+                  </div><!-- End .header-right -->
+              </div><!-- End .container --> 
+              </div>  
+
+</header>
+ 
+      {% endif %}
+      {% endblock %}
