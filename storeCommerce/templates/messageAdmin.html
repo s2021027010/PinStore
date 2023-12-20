@@ -1,0 +1,84 @@
+ <!--https://fonts.google.com/icons-->
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Message</title>
+ <meta name="keywords" content="HTML5 Template">
+ <meta name="description" content="Pin Store">
+ <meta name="author" content="p-themes"> 
+ <meta name="apple-mobile-web-app-title" content="Pin Store">
+ <meta name="application-name" content="Pin Store">
+ <meta name="msapplication-TileColor" content="#cc9966">
+ <meta name="theme-color" content="#ffffff">
+ {% load static %}
+ 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/editBtn.css' %}"> 
+ <link rel="stylesheet" href="{% static 'storeCommerce/assets/css/style.css' %}"> 
+{% load custom_tag %}
+
+ {% block content %}
+ {% if user.is_authenticated %}
+ {% include 'header.html' %} 
+     </header> 
+       <div class="container " >
+        <h4> <span class="material-symbols-outlined">mail</span> : {{perse_email}}</h4>
+         <div class="header-left  ">  
+             <div class="container row">  
+              
+    
+    <div id="chatbarX" class="chat_box_admin  animated fadeInUp">  
+      <div style="background-color: rgb(245, 255, 255);" class="chat_box_header">
+        Chat with {{perse_email}}
+      </div>
+    <div class="boxstylo_admin" >
+      {% for msg in obj_MSG reversed %} 
+      <!--   user    -->
+      {% if msg.db_message_sender == perse_email %}
+      <div class="row ">
+      <img src="{{BASE_DIR}}/Auth/media/{{perse_email|message_img}}" class="userimgBox_admin" />
+         <label  class="userlblstylo_admin">
+          <p><a>{{msg.db_message_sender}}</a></p>
+            {{msg.db_Message_Text}}
+          <p class="lbltime">{{msg.created_at}}</p>
+          </label>
+      </div> 
+      {% endif %}
+      {% if msg.db_message_sender == user.email and  msg.db_message_reciever == perse_email %}
+      <!--  admin-->
+      <div class="row rowAdmin_admin " > 
+         <label  class="adminlblstylo_admin "> 
+          <p><a>{{msg.db_message_sender}}</a></p>
+              {{msg.db_Message_Text}}
+         <p class="lbltime">{{msg.created_at}} </p>
+        </label>
+        <img src="{% static 'storeCommerce/assets/images/logos/logoName.png' %}" class="adminimgBox_admin" />
+      </div> 
+      {% endif %}
+ 
+      {% endfor %}
+ 
+     </div>
+    <form action="{% url 'messageAdmin' perse_email %}" method="post"  enctype="multipart/form-data">
+    <div class="chat_box_footer textposit" >  
+      <input type="text" id="user_email" value="{{user.email}}" name="user_email" hidden>
+      <input type="text" id="MsgInput" name="MsgInput"  class="txtstylo_admin"  placeholder="Enter Message">
+      <button  class="btnstylo_admin"><span class="material-symbols-outlined">send</span></button>
+    </div>
+    </form> 
+ </div> 
+               
+
+
+
+
+
+            </div>   
+         </div>
+       </div>
+ {% include 'footer.html' %}
+
+
+ {% endif %}
+ {% endblock %}
+
+

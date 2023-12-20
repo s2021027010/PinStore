@@ -1,0 +1,447 @@
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Mobile {{title}}</title>
+<meta name="keywords" content="HTML5 Template">
+<meta name="description" content="Pin Store">
+<meta name="author" content="p-themes"> 
+<meta name="apple-mobile-web-app-title" content="Pin Store">
+<meta name="application-name" content="Pin Store">
+<meta name="msapplication-TileColor" content="#cc9966">
+<meta name="theme-color" content="#ffffff">
+{% load static %}  
+<link rel="stylesheet" href="{% static 'Authentication/css/login/icons.min.css' %}">
+<link rel="stylesheet" href="{% static 'Authentication/css/login/style.css' %}"> 
+ 
+<link rel="stylesheet" href="{% static 'storeCommerce/assets/css/editBtn.css' %}"> 
+<link rel="stylesheet" href="{% static 'Authentication/css/login/mystyle.css' %}"> 
+
+<link rel="stylesheet" href="{% static 'storeCommerce/assets/css/ProdNav.css' %}">
+<link rel="stylesheet" href="{% static 'storeCommerce/assets/css/button.css' %}"> 
+{% include 'header.html' %} 
+</header> 
+<div class="container " >
+<div class="header-left ">  
+<div class="container">   
+    <div class="form-tab">  
+         <div class="tab-pane wrapper-add" id="login"  > 
+             <h4>Computer Update</h4>
+             {% if messages %}
+                     <ul class="messages">
+                         {% for message in messages %}
+                         <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                         {% endfor %}
+                     </ul>
+                 {% endif %}
+
+            
+         <form action="{% url 'update_Computer_byAdmin' view_Product.db_Product_ID %}"  method="post"  enctype="multipart/form-data">
+                 {% csrf_token %} 
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="computer_Name" >Product Name *</label>
+                     <input type="text" class="form-control" value="{{view_Product.db_Product_Name}}" id="computer_Name" name="computer_Name" placeholder="Product Name" >
+                 </div>
+                 <div class="form-group col-sm-6"> 
+                    <div class="add-box-image" > 
+                         <div class="upload-options">  
+                                <img id="blah" src="{{BASE_DIR}}/Auth/media/{{view_Image.db_Product_photo}}" class="addMobileImage"    name="mobile_ImgDisplay" alt="Select Display Image*" />
+                                <input accept="image/*" class="addMobileInput" type='file'   name="mobile_ImgDisplay"  id="mobile_ImgDisplay" />
+                             </div>
+                    </div>   
+            </div> 
+                 
+             </div> 
+             
+             <div class="row">
+                <div class="form-group col-sm-6"> 
+                    <label for="computer_Price">Product Price (doller)*</label>
+                    <input type="text" class="form-control" value="{{view_Product.db_Product_Price}}" id="computer_Price" name="computer_Price" placeholder=" Product Price" >
+                </div><!-- End .form-group -->
+                
+
+                 <div class="form-group col-sm-6"> 
+                    <label for="computer_Type">Product Type *</label>
+                    <div name="computer_Type" class="form-control"> 
+                        <select id="options" name="computer_Type" value="{{view_Product.db_Product_Type}}"  class="selectdata custom-select" required>
+                            <option  value="" disabled selected>Product Type</option> 
+                            <option  name="computer_Type" value="Simple Computer">Simple Computer</option>
+                            <option  name="computer_Type" value="Computer Fundamental">Computer Fundamental</option>
+                            <option  name="computer_Type" value="Hybrid computer">Hybrid computer</option>
+                            <option  name="computer_Type" value="Desktop computer">Desktop computer</option>
+                            <option  name="computer_Type" value="Smart Laptop">Smart Laptop</option>
+                            <option  name="computer_Type" value="Mini-Laptop">Mini Laptop</option>
+                            <option  name="computer_Type" value="Micro-Laptop">Micro Laptop</option>
+                            <option  name="computer_Type" value="Tablet">Tablet</option>
+                            <option  name="computer_Type" value="Microcomputers">Microcomputers</option>
+                            <option  name="computer_Type" value="Minicomputers">Minicomputers</option>
+                            <option  name="computer_Type" value="Digital computer">Digital computer</option>
+                            <option  name="computer_Type" value="Analog computer">Analog computer</option>
+                            <option  name="computer_Type" value="Smartphone Computer">Smartphone Computer</option>
+                            <option  name="computer_Type" value="Supercomputer">Supercomputer</option> 
+                            <option  name="computer_Type" value="Personal Computer or PC">Personal Computer or PC</option>
+                            <option  name="computer_Type" value="Mainframe">Mainframe</option> 
+                            <option  name="computer_Type" value="Server Computer">Server Computer</option>
+                            <option  name="computer_Type" value="Workstation Computer">Workstation Computer</option> 
+                            <option  name="computer_Type" value="Microcontroller">Microcontroller</option>
+                            <option  name="computer_Type" value="Quantum computer">Quantum computer</option> 
+                            <option  name="computer_Type" value="Other">Other</option>
+                        </select>  
+                    </div>
+                </div><!-- End .form-group -->
+                 </div>
+                 <div class="row">
+                    <div class=" col-sm-12"> 
+                        <label for="computer_category" >Product Category *</label>  
+                        <div name="computer_category" class="form-control">
+                           <select id="options"  name="computer_category"  class="selectdata custom-select" required>
+                               <option  value="" disabled >Select Category</option>
+                               <option  name="computer_category" value="Mobile">Mobile / Phone</option> 
+                               <option  name="computer_category" value="Computer" selected>Computer / Laptop</option> 
+                               <option  name="computer_category" value="Cloth">Cloth</option> 
+                               <option  name="computer_category" value="shoes">Shoes</option>  
+                               <option  name="computer_category" value="Tv">T.V</option> 
+                               <option  name="computer_category" value="Watch">Watch</option> 
+                               <option  name="computer_category" value="Accessories">Accessories</option> 
+                            </select>  
+                       </div>
+                    </div>
+                    
+             </div> 
+             
+             <div class="row">
+                  
+                 <div class="form-group col-sm-6"> 
+                     <label for="computer_Brand">Product Brand *</label>
+                     <input type="text" class="form-control"  value="{{view_Product.db_Product_Brand}}"  id="computer_Brand" name="computer_Brand" placeholder="Product Brand" >
+                 </div><!-- End .form-group -->
+                 <div class=" col-sm-6"> 
+                     <label for="computer_MadeByCountry" >Made By Country *</label>
+                     <input type="text" class="form-control" id="computer_MadeByCountry"  value="{{view_Product.db_Product_MadeByCountry}}"  name="computer_MadeByCountry" placeholder="Made by Country Name" >
+                 </div>
+             </div> 
+             
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="computer_Size" >Product Size *</label>
+                     <input type="text" class="form-control" id="computer_Size"  value="{{view_Product.db_Product_Size}}"  name="computer_Size" placeholder="Product Size: 6.67 (only in inches)"  >
+                 </div>
+                 
+                 <div class="form-group col-sm-3 "> 
+                     <label for="computer_Resolution1">Computer Resolution</label>
+                     <input type="number" class="form-control"  id="computer_Resolution1" name="computer_Resolution1"  placeholder="1024 pixels"  required>
+                 </div><!-- End .form-group --> 
+                 <div class="form-group col-sm-3">  
+                     <label for="computer_Resolution2">(pixels x Pixels)*</label>
+                     <input type="number" class="form-control" id="computer_Resolution2" name="computer_Resolution2"  placeholder=" x 2048 pixels"  required>
+                 </div><!-- End .form-group -->
+                 
+             </div> 
+             <div class="row" >
+             <div class=" col-sm-6"> 
+                 <label for="computer_OS" >Computer Operating System *</label>
+                 <div name="computer_OS" class="form-control">
+                     <select id="options"  name="computer_OS"  class="selectdata custom-select" required>
+                         <option  value="" disabled selected>Computer Operating System</option>
+                         <option  name="computer_OS" value="Microsoft Windows">Microsoft Windows</option>
+                         <option  name="computer_OS" value="Linux ">Linux </option> 
+                         <option  name="computer_OS" value="Android">Android</option>
+                         <option  name="computer_OS" value="macOS">macOS</option>
+                         <option  name="computer_OS" value="Unix">Unix</option>
+                         <option  name="computer_OS" value="iOS">iOS</option>
+                         <option  name="computer_OS" value="ChromeOS">ChromeOS</option>
+                         <option  name="computer_OS" value="Windows 7">Windows 7</option>
+                         <option  name="computer_OS" value="Windows 8">Windows 8</option>
+                         <option  name="computer_OS" value="Windows 9">Windows 9</option>
+                         <option  name="computer_OS" value="Windows 10">Windows 10</option>
+                         <option  name="computer_OS" value="Windows 11">Windows 11</option>
+                         <option  name="computer_OS" value="Windows XP">Windows XP</option>
+                         <option  name="computer_OS" value="Windows Vista">Windows Vista</option>
+                         <option  name="computer_OS" value="Ubuntu">Ubuntu</option>
+                         <option  name="computer_OS" value="macOS Big Sur">macOS Big Sur</option>
+                         <option  name="computer_OS" value="Fedora Linux">Fedora Linux</option>
+                         <option  name="computer_OS" value="CentOS">CentOS</option>
+                         <option  name="computer_OS" value="macOS Sierra">macOS Sierra</option>
+                         <option  name="computer_OS" value="OS X El Capitan">OS X El Capitan</option>
+                         <option  name="computer_OS" value="OS X Mavericks">OS X Mavericks</option>
+                         <option  name="computer_OS" value="Windows Phone">Windows Phone</option>
+                         <option  name="computer_OS" value="FreeBSD">FreeBSD</option>
+                         <option  name="computer_OS" value="Deepin">Deepin</option>
+                         <option  name="computer_OS" value="Embedded operating system">Embedded operating system</option>
+
+                     </select>  
+                 </div>
+             </div>
+             
+             <div class="form-group col-sm-6"> 
+                 <label for="computer_Card">Graphic Card/CD Holder *</label>
+                 <div name="computer_Card" class="form-control">
+                     <select id="options"  name="computer_Card"  class="selectdata custom-select" required>
+                        <option  value="" disabled selected>Computer Graphic card and CD Options</option>
+                         <option  name="computer_Card" value="NVIDIA GeForce GTX 1050 Ti , with CD Holder">NVIDIA GeForce GTX 1050 Ti , with CD Holder</option> 
+                        <option  name="computer_Card" value="Geforce Gtx , with CD Holder">Geforce Gtx , with CD Holder</option> 
+                         <option  name="computer_Card" value="GIGABYTE GeForce GT 1030 , with CD Holder">GIGABYTE GeForce GT 1030 , with CD Holder</option> 
+                        <option  name="computer_Card" value="Geforce Rtx  , with CD Holder">Geforce Rtx  , with CD Holder</option> 
+                         <option  name="computer_Card" value="NVIDIA Quadro , with CD Holder">NVIDIA Quadro , with CD Holder</option> 
+                         <option  name="computer_Card" value="NVIDIA Founders Edition GeForce RTX 2080 , with CD Holder">NVIDIA Founders Edition GeForce RTX 2080 , with CD Holder</option>
+                         <option  name="computer_Card" value="GeForce , with CD Holder">GeForce , with CD Holder</option>
+                         <option  name="computer_Card" value="AMD Radeon RX Series , with CD Holder">AMD Radeon RX Series , with CD Holder</option>
+                         <option  name="computer_Card" value="NVIDIA GeForce RTX 3060 Ti , with CD Holder">NVIDIA GeForce RTX 3060 Ti , with CD Holder</option>
+                         <option  name="computer_Card" value="NVIDIA GeForce RTX 2070 , with CD Holder">NVIDIA GeForce RTX 2070 , with CD Holder</option>
+                         <option  name="computer_Card" value="AMD Radeon RX 580 , with CD Holder">AMD Radeon RX 580 , with CD Holder</option>
+                         <option  name="computer_Card" value="GeForce 10 series , with CD Holder">GeForce 10 series , with CD Holder</option>
+                         <option  name="computer_Card" value="GIGABYTE AMD Radeon RX 5600 XT , with CD Holder">GIGABYTE AMD Radeon RX 5600 XT , with CD Holder</option>
+                        <option  name="computer_Card" value="with Minimum Graphic  , with CD Holder">with Minimum Graphic  , with CD Holder</option> 
+                         <option  name="computer_Card" value="with maximum Graphic , with CD Holder">with maximum Graphic , with CD Holder</option> 
+                        <option  name="computer_Card" value="without Graphic Card , with CD Holder">without Graphic Card , with CD Holder</option> 
+                         <option  name="computer_Card" value="Without Graphic Card , without CD Holder">Without Graphic Card , without CD Holder</option> 
+                        <option  name="computer_Card" value="with few Graphic Card , with CD Holder">with few Graphic Card , with CD Holder</option> 
+                         <option  name="computer_Card" value="with Gaming Graphic card , with CD Holder"> with Gaming Graphic card , with CD Holder</option>
+                         <option  name="computer_Card" value="without Gaming Graphic card , with CD Holder"> without Gaming Graphic card , with CD Holder</option> 
+                         <option  name="computer_Card" value="with Gaming Graphic card , with CD Holder"> with Video Graphic card , with CD Holder</option>
+                         <option  name="computer_Card" value="without Gaming Graphic card , with CD Holder"> without Video Graphic card , with CD Holder</option> 
+                        <option  name="computer_Card" value="with High Resolution Graphic, with CD Holder">with High Resolution Graphic, with CD Holder</option> 
+                         <option  name="computer_Card" value="other , with CD Holder">other , with CD Holder</option>
+                    </select>  
+                 </div>
+             </div><!-- End .form-group -->
+             </div>
+             <div class="row"> 
+                 <div class="form-group col-sm-4"> 
+                     <label for="computer_Storage_ROM1">Computer ROM Storage *</label>
+                     <input type="number" class="form-control" value="{{view_Computer.db_Computer_Store_ROM}}" id="computer_Storage_ROM1" name="computer_Storage_ROM1" placeholder="computer ROM Storage" required>
+                 </div><!-- End .form-group -->
+                 <div class=" col-sm-2"> 
+                     <label for="Computer_Storage_ROM2" >Bits *</label>
+                     <div name="computer_Storage_ROM2" class="form-control">
+                         <select id="options"  name="computer_Storage_ROM2"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Computer ROM Size</option>
+                             <option  name="computer_Storage_ROM2" value="EB">EB ( Exa-Byte)</option>
+                             <option  name="computer_Storage_ROM2" value="PB">PB ( Peta-Byte)</option>
+                             <option  name="computer_Storage_ROM2" value="TB">TB ( Tera-Byte)</option> 
+                             <option  name="computer_Storage_ROM2" value="GB">GB ( Giga-Byte)</option> 
+                             <option  name="computer_Storage_ROM2" value="MB">MB ( Mega-Byte)</option> 
+                             <option  name="computer_Storage_ROM2" value="KB">KB ( Kilo Byte)</option> 
+                             <option  name="computer_Storage_ROM2" value="B">B ( Byte)</option> 
+                         </select>  
+                     </div>
+                 </div>
+                 <div class=" col-sm-4"> 
+                     <label for="computer_Storage_RAM1" >Computer RAM Storage *</label>
+                     <input type="number" class="form-control" value="{{view_Computer.db_Computer_Store_RAM}}" id="computer_Storage_RAM" name="computer_Storage_RAM1" placeholder="computer RAM Store" required>
+                 </div>
+                 <div class=" col-sm-2"> 
+                     <label for="computer_Storage_RAM2" >Bits *</label>
+                     <div name="computer_Storage_RAM2" class="form-control">
+                         <select id="options"  name="computer_Storage_RAM2"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Computer RAM Size</option> 
+                             <option  name="computer_Storage_RAM2" value="TB">TB ( Tera-Byte)</option> 
+                             <option  name="computer_Storage_RAM2" value="GB">GB ( Giga-Byte)</option> 
+                             <option  name="computer_Storage_RAM2" value="MB">MB ( Mega-Byte)</option> 
+                             <option  name="computer_Storage_RAM2" value="KB">KB ( Kilo Byte)</option> 
+                             <option  name="computer_Storage_RAM2" value="B">B ( Byte)</option> 
+                         </select>  
+                     </div>
+                 </div>
+             </div> 
+             
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="computer_BatteryTiming" >Computer Battery Timing *</label>
+                     <div name="computer_BatteryTiming" class="form-control">
+                         <select id="options"  name="computer_BatteryTiming"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Computer Battery Condition</option>
+                             <option  name="computer_BatteryTiming" value=" ( 90% - 100% ) - Excellent ">( 90% - 100%  ) - Excellent </option>
+                             <option  name="computer_BatteryTiming" value=" ( 80% - 89% ) - Best ">( 80% - 89% ) - Best </option>
+                             <option  name="computer_BatteryTiming" value=" ( 70% - 79% ) - Better ">( 70% - 79% ) - Better </option>
+                             <option  name="computer_BatteryTiming" value=" ( 60% - 69% ) - Good ">( 60% - 69% ) - Good </option>
+                             <option  name="computer_BatteryTiming" value=" ( 50% - 59% ) - Poor ">( 50% - 59% ) - Poor </option>
+                             <option  name="computer_BatteryTiming" value=" ( 40% - 49% ) - Fair ">( 40% - 49% ) - Fair </option> 
+                             <option  name="computer_BatteryTiming" value=" ( 1% - 39% ) - Dead ">( 1%-39% ) - Dead </option>
+                         </select>  
+                     </div>
+                 </div>
+                 <div class="form-group col-sm-6"> 
+                     <label for="computer_Color">Computer Colors *</label>
+                     <input type="text" class="form-control" value="{{view_Computer.db_Computer_Color}}" id="computer_Color" name="computer_Color" placeholder="computer Color" >
+                 </div><!-- End .form-group -->
+             </div> 
+             
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="computer_Condition" >Product Condition *</label> 
+                     <div name="computer_Condition" class="form-control">
+                         <select id="options"  name="computer_Condition"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Product Condition</option>
+                             <option  name="computer_Condition" value=" ( 90% - 100% ) - Excellent ">( 90% - 100%  ) - Excellent </option>
+                             <option  name="computer_Condition" value=" ( 80% - 89% ) - Best ">( 80% - 89% ) - Best </option>
+                             <option  name="computer_Condition" value=" ( 70% - 79% ) - Better ">( 70% - 79% ) - Better </option>
+                             <option  name="computer_Condition" value=" ( 60% - 69% ) - Good ">( 60% - 69% ) - Good </option>
+                             <option  name="computer_Condition" value=" ( 50% - 59% ) - Poor ">( 50% - 59% ) - Poor </option>
+                             <option  name="computer_Condition" value=" ( 40% - 49% ) - Fair ">( 40% - 49% ) - Fair </option> 
+                             <option  name="computer_Condition" value=" ( 1% - 39% ) - Dead ">( 1%-39% ) - Dead </option>
+                         </select>  
+                     </div>
+                 </div>
+                 <div class="form-group col-sm-6"> 
+                     <label for="computer_Freshnes">Product Freshness *</label> 
+                     <div name="computer_Freshnes" class="form-control">
+                         <select id="options"  name="computer_Freshnes"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Product Freshness</option>
+                             <option  name="computer_Freshnes" value="New" >New</option>
+                             <option  name="computer_Freshnes" value="Old">Old</option>
+                             <option  name="computer_Freshnes" value="Mint">Mint</option>
+                             <option  name="computer_Freshnes" value="A Block">A Block</option>
+                             <option  name="computer_Freshnes" value="B Block">B Block</option>
+                             <option  name="computer_Freshnes" value="C Block">C Block</option>
+                             <option  name="computer_Freshnes" value="D Block">D Block</option>
+                             <option  name="computer_Freshnes" value="Open Box">Open Box</option>
+                             <option  name="computer_Freshnes" value="Second Hand">Second Hand</option>
+                             <option  name="computer_Freshnes" value="Refurbished">Refurbished</option>
+                             <option  name="computer_Freshnes" value="Certified Refurbished">Certified Refurbished</option>
+                             <option  name="computer_Freshnes" value="Certified Pre-Owned">Certified Pre-Owned</option>
+                             <option  name="computer_Freshnes" value="Parts or not Workking" >Parts or not Workking</option>
+                             
+                         </select>  
+                     </div>
+                 </div><!-- End .form-group -->
+             </div> 
+             
+             <div class="row" style="background-color: rgb(216, 209, 209);">
+                 <div class=" col-sm-4"> 
+                     <label for="computer_Camera" >Computer Camera *</label>
+                     <div name="computer_Camera" class="form-control">
+                         <select id="options"  name="computer_Camera"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Computer Camera status select</option>
+                             <option  name="computer_Camera" value="Signle Back Camera, with Front Camera">Signle Back Camera, with Front Camera</option>
+                             <option  name="computer_Camera" value="Dual Back Camera, with Front Camera">Dual Back Camera, with Front Camera</option>
+                             <option  name="computer_Camera" value="Triple Back Camera, with Front Camera">Triple Back Camera, with Front Camera</option>
+                             <option  name="computer_Camera" value="Rotatig Camera, with Front Camera">Rotatig Camera, with Front Camera</option> 
+                             <option  name="computer_Camera" value="Signle Back Camera, Without Front Camera">Signle Back Camera, without Front Camera</option>
+                             <option  name="computer_Camera" value="Dual Back Camera, Without Front Camera">Dual Back Camera, without Front Camera</option>
+                             <option  name="computer_Camera" value="Triple Back Camera, Without Front Camera">Triple Back Camera, without Front Camera</option>
+                             <option  name="computer_Camera" value="Rotatig Camera, Without Front Camera">Rotatig Camera, without Front Camera</option> 
+                             <option  name="computer_Camera" value="Without Signle Back Camera, With Front Camera">Without Signle Back Camera, With Front Camera</option> 
+                             <option  name="computer_Camera" value="Without Rotatig Camera, With Front Camera">Without Rotatig Camera, With Front Camera</option>
+                             <option  name="computer_Camera" value="Both Back & Front Camera">Both Back & Front Camera</option>
+                             <option  name="computer_Camera" value="Not Available">Not Available</option> 
+                         </select>  
+                     </div>
+                 </div>
+                 <div class=" col-sm-4"> 
+                     <label for="computer_Camera2" >Back Camera *</label>
+                     <input type="number" class="form-control" id="computer_Camera2" name="computer_Camera2" placeholder="50Mega Pixels Back" required>
+                 </div>
+                 <div class=" col-sm-4"> 
+                     <label for="computer_Camera3" >MP Front Camera *</label>
+                     <input type="number" class="form-control" id="computer_Camera3" name="computer_Camera3" placeholder="12MP Front" required>
+                 </div>
+                 
+             </div> 
+              
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="computer_Charger" >Computer Charger  *</label>
+                     <div name="computer_Charger" class="form-control">
+                         <select id="options"  name="computer_Charger"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Computer Charger Options</option>
+                             <option  name="computer_Charger" value="With Charger">With Charger</option> 
+                             <option  name="computer_Charger" value="Without Charger">Without Charger</option>  
+                         </select>  
+                     </div>
+                 </div>
+                 <div class=" col-sm-6"> 
+                     <label for="computer_Status" >Product Status *</label>
+                     <div name="computer_Status" class="form-control">
+                         <select id="options"  name="computer_Status"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Product Status</option>
+                             <option  name="computer_Status" value="Available">Available</option>
+                             <option  name="computer_Status" value="Not Available">Not Available</option>
+                             <option  name="computer_Status" value="Limited Addition">Limited Addition</option>
+                         </select>  
+                     </div>
+                 </div>
+                 
+             </div> 
+               
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="computer_QR_Code" >Product QR Code *</label>
+                     <input type="text" class="form-control" value="{{view_Product.db_Product_QR_Code}}" id="computer_QR_Code" name="computer_QR_Code" placeholder="Product QR-Code" >
+                 </div>
+                 <div class="form-group col-sm-6"> 
+                     <label for="computer_IssueDate">Product Issue Date *</label> 
+                     <input type="date" class="form-control" value="{{view_Product.db_Product_IssueDate}}" id="computer_IssueDate" name="computer_IssueDate" required>
+                 </div><!-- End .form-group -->
+             </div>
+             
+             <div class="row">
+                 <div class=" col-sm-12"> 
+                 <label for="computer_Description">Product Description *</label>
+                 <textarea type="text" class="form-control" id="computer_Description" value="{{view_Product.db_Product_Description}}" name="computer_Description" placeholder="Product Description" >{{view_Product.db_Product_Description}}</textarea>
+             </div><!-- End .form-group -->
+                 
+                 <div class="form-group col-sm-6" hidden> 
+                     <label for="computer_Customer_Rated" hidden>Customer Review *</label>
+                     <input type="text" hidden class="form-control" value="{{view_Product.db_Product_Customer_Rated}}" id="computer_Customer_Rated" name="computer_Customer_Rated"   >
+                 </div><!-- End .form-group -->
+             </div> 
+             
+             <div class="row">
+                <div class=" col-sm-3"> 
+                <label for="computer_Photo1">Extra Images-1 *</label>
+                <input type="file" class="form-control" value="{{view_Image.list1_img}}" id="computer_Photo1" name="computer_Photo1" placeholder="Product Image View 1" />
+            </div><!-- End .form-group -->
+                
+                <div class="form-group col-sm-3"  >  
+                    <label for="computer_Photo2"> Images View-2 *</label>
+                    <input type="file" class="form-control" src="{{view_Image.list2_img}}" value="{{view_Image.list2_img}}" id="computer_Photo2" name="computer_Photo2"   />
+                </div><!-- End .form-group -->
+                <div class="form-group col-sm-3"  >  
+                    <label for="computer_Photo3"> Images View-3 *</label>
+                    <input type="file" class="form-control" id="computer_Photo3" value="{{view_Image.list3_img}}" name="computer_Photo3"  />
+                </div><!-- End .form-group -->
+                <div class="form-group col-sm-3"  >  
+                    <label for="computer_Photo4"> Images View-4 *</label>
+                    <input type="file" class="form-control" id="computer_Photo4" value="{{view_Image.list4_img}}" name="computer_Photo4"   />
+                </div><!-- End .form-group -->
+            </div> 
+                 <div class=" form-group "> 
+                     <label for="computer_Extra" >Computer Extra *</label>
+                     <input type="text" class="form-control" id="computer_Extra" value="{{view_Computer.db_Computer_Extra}}" name="computer_Extra" placeholder="computer Extra Feature" >
+                 </div>    
+
+             <div class="header-right ">
+                 <button type="submit" class="mybtn ">
+                     <span>Save Product </span> 
+                     <span class="material-symbols-outlined">playlist_add</span>
+                 </button>
+
+                 
+             </div><!-- End .form-footer --> 
+       </form> 
+ 
+
+
+       </div>
+    </div>
+</div> 
+
+</header>
+{% include 'footer.html' %}
+
+<script src="{% static 'storeCommerce/assets/js/AddProdNav.js' %}"></script>
+
+  
+<script>
+    imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+  }
+}
+</script>
+
+
+
