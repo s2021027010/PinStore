@@ -1,0 +1,147 @@
+@clr-tab--active: #0076c8;
+@clr-tab--inactive: black;
+ 
+h1, h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ccc;
+}
+.table-wrap {
+  overflow-x: scroll; 
+  overflow-y: scroll;}
+.Personal{
+  background-color: #035997;
+}
+.wrapX {
+  overflow-x: scroll;
+}
+
+.btnBorder {
+  border: none; 
+  background-color: transparent;
+  border-color: transparent;
+}
+.IconRed:hover {
+  color: red;
+} 
+.texthold{ 
+  box-sizing: border-box;
+  border: 3px solid transparent;  
+  outline: none; 
+  background-color: transparent; 
+  
+  font-size: small;
+  width: 180px; 
+  height: 50px;
+  min-height: 50px;
+  min-width: 180px;  
+  max-height: 200px;
+  max-width: 550px;
+
+  &:hover{
+    border: none none;
+  }
+  &:focus {
+    border: 3px solid transparent; 
+  }
+}
+ 
+.inputhold{ 
+  box-sizing: border-box;
+  border: 3px solid transparent;  
+  outline: none;   
+  color: red;
+  font-size: small;
+
+  &:hover{
+    border: none none;
+  }
+  &:focus {
+    border: 3px solid transparent; 
+  }
+}
+
+.textholdID{ 
+  box-sizing: border-box;
+  border: 3px solid transparent;  
+  outline: none; 
+  background-color: transparent; 
+  
+  width: 110px; 
+  height: 37px;
+  min-height: 37px;
+  min-width: 110px;  
+  max-height: 200px;
+  max-width: 510px;
+
+  &:hover{
+    border: none none;
+  }
+  &:focus {
+    border: 3px solid transparent; 
+  }
+}
+.space{
+  color: transparent;
+}
+h2 {
+  font-size: 20px;
+  color: #999
+}
+
+tr {
+  overflow-x: scroll;
+  border-left: dotted 1px;
+  background: #e3e4e6; 
+  &:nth-child(odd) {
+    overflow-x: scroll;
+    background: #cacbcc;
+  }
+  &:hover{
+    background: #b7c7d6;
+    overflow-x: scroll;
+  }
+}
+
+td, th {
+  border-left: solid 1px;
+  padding: 12px;
+  text-align: left; 
+}
+
+th {
+  border-left: dotted 1px;
+  background: darken(#0076c8, 15%);
+  color: white;
+  &[data-tabbedTable] {
+    background: #0076c8;
+  }
+}
+
+.tabbedTable-labels {
+  float: right; 
+  color: white;
+}
+
+label {
+  background: transparent;
+  color: white;
+  border-radius: 5px 5px 0 0;
+  padding: 12px 15px 10px 15px;
+  margin-left: 5px;
+  display: inline-block;
+  cursor: pointer; 
+  &.tabbedTable-label--active {
+    display: none;
+    background: transparent;
+    color: transparent;
+  }
+}
+
+.tabbedTable {
+  width: 100%;
+  margin: 0 0 20px 0;
+  color: white;
+}

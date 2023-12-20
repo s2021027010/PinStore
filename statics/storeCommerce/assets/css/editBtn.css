@@ -1,0 +1,182 @@
+
+.btn-img-edit {
+    position: relative;
+    border: solid;
+    background-color: rgba(8, 156, 8, 0.671); 
+    color: white;
+    border-radius: 100%;
+    width: 50px; 
+    height: 50px; 
+    left: 3dvh;
+    bottom: 18dvh; 
+
+    &:hover { 
+    background-color: rgb(8, 156, 8);
+  }
+  }
+  .btn-bio-edit {
+    position: relative;
+    border: solid;
+    background-color: rgba(8, 156, 8, 0.671); 
+    color: white;
+    border-radius: 100%;
+    width: 45px; 
+    height: 45px; 
+    left: 32dvh;
+    bottom: 32dvh; 
+
+    &:hover { 
+    background-color: rgb(8, 156, 8);
+  }
+  }
+
+
+.addMobileImage { 
+  position: relative;
+  border: solid; 
+  top: 2dvh;
+  width: 250px; 
+  height: 165px; 
+  max-width: 250px; 
+  max-height: 165px;
+  
+  padding: 0 0;
+  
+  }
+.addMobileInput {
+  position: relative ; 
+  top: 2dvh;
+  padding: 0;
+}
+
+  <!-- <!-- <!--   <!-- <!-- <!--   <!-- <!-- <!--   <!-- <!-- <!--   <!-- <!-- <!--   <!-- <!-- <!--   <!-- <!-- <!-- 
+
+.wrapper-home { 
+    height: auto;
+    width: auto; 
+    position: relative;
+    left: 25dvh;
+    min-height: 60dvh;
+    max-height: 60dvh;
+    max-width: 36dvh; 
+    min-width: 36dvh;
+    margin: 5px; 
+    background-color: #9be010;
+    background: radial-gradient(#e5f89e, #b2ec3c);
+    box-shadow: 0 5px 10px rgba(12, 12, 12, 0.973);
+    margin-top: 3px;
+   &:hover {  
+    box-shadow: 5px 10px 10px rgba(248, 248, 244, 0.801);
+  }
+} 
+
+.home-box-image { 
+  display: block;
+  height: 200px;
+  width: 200px; 
+  position: relative;
+  left: 1dvh;
+  border-radius: 25px;
+
+}
+   
+.view-button {
+  position: relative;
+  left: 3dvh;
+  bottom: 3.5dvh;
+  padding-left: 30%; 
+  padding-right: 30%; 
+  margin: 2px;
+  border: block; 
+  color: darkgreen;
+  background-color: white;
+  border-radius: 100px;
+  box-shadow: 0 5px 10px rgba(80, 79, 79, 0.363);
+  &:hover{
+    color: aliceblue;
+    background-color: darkgreen;
+  }
+}
+.name {
+  position: relative;
+  left: 11dvh;
+  bottom: 3.5dvh;
+  margin: 0;
+  color: black;
+  border: block;
+  border-radius: 100px; 
+}
+
+.price {
+  position: relative;
+  left: 1dvh; 
+  bottom: 3.5dvh;
+  margin: 0; 
+  size: bold;
+  border: block;
+  border-radius: 100px;
+  color: red;
+}
+.type {
+  position: relative;
+  left: 1dvh; 
+  bottom: 3.5dvh;
+  max-width: fit-content;
+  margin: 0;
+  color: black;
+  border: block;
+  border-radius: 100px; 
+}
+.cate {
+  position: relative;
+  left: 1dvh; 
+  bottom: 3.5dvh;
+  margin: 0;
+  color: black;
+  border: block;
+  border-radius: 100px; 
+}
+
+.space {
+  position: relative;
+  left: 3dvh; 
+  color: transparent;
+  margin: 3px;
+}
+
+.posit{
+  position: relative; 
+  left: 29dvh; 
+  bottom: 29dvh;
+}
+.wishbtn {
+  border: none; 
+  background-color: transparent; 
+  background: none;
+  color: rgba(4, 131, 61, 0.87);
+  &:hover {
+    color: white;
+    background-color: rgb(160, 114, 55);
+  }
+}
+  
+.Unwishbtn {
+  border: none;
+  background-color: transparent; 
+  background: none;
+  color: red;
+  &:hover {
+    color: white;
+    background-color: rgb(160, 114, 55);
+  }
+
+}
+
+
+.hove{   
+  display: none; 
+   
+}
+.hove:hover {
+  display: active;
+}
