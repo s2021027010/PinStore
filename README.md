@@ -11,11 +11,8 @@ PinStore  login page
 PinStore signup page
 ![PinStore signup page](https://github.com/s2021027010/PinStore/assets/120708899/f1072f7d-0c8b-47a1-8445-7faa7a63a99b)
 
-PinStore setting
-![PinStore setting](https://github.com/s2021027010/PinStore/assets/120708899/403fcf99-6790-4a78-97e3-fab8d913ca0c)
-
-PinStore Search page
-![PinStore Search page](https://github.com/s2021027010/PinStore/assets/120708899/7fc9d3e1-0fa9-4b8f-a964-297d7b557d24)
+PinStore Profile 
+![PinStore Profile](https://github.com/s2021027010/PinStore/assets/120708899/8e943a23-ea7a-4f00-a091-56f51465ba20)
 
 PinStore mobile page
 ![PinStore mobile page](https://github.com/s2021027010/PinStore/assets/120708899/7c8d63d0-cd5a-4ac6-96ee-1cb5e88cf101)
@@ -32,6 +29,13 @@ PinStore computer page
 PinStore Watch page / Tv Page / Cloths / Accessories etc page
 ![PinStore Watch page](https://github.com/s2021027010/PinStore/assets/120708899/71339a45-e907-4055-b691-01e8777360f3)
 
+PinStore setting
+![PinStore setting](https://github.com/s2021027010/PinStore/assets/120708899/403fcf99-6790-4a78-97e3-fab8d913ca0c)
+
+PinStore Search page
+![PinStore Search page](https://github.com/s2021027010/PinStore/assets/120708899/7fc9d3e1-0fa9-4b8f-a964-297d7b557d24)
+
+                                                      Admin Authorization
 PinStore Admin user Add and update form
 ![PinStore Admin user Add and update form](https://github.com/s2021027010/PinStore/assets/120708899/d711609f-957d-4075-b201-34d938873c45)
 
