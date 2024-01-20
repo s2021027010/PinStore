@@ -1,0 +1,405 @@
+ {% load static %} 
+<link rel="stylesheet" href="{% static 'storeCommerce/assets/css/editBtn.css' %}"> 
+
+<div class="container">   
+    <div class="form-tab">  
+         <div class="tab-pane wrapper-add" id="login"  > 
+             <h4>Mobile Data</h4>
+         <form action="{% url 'mobile_Product_admin' %}"  method="post"  enctype="multipart/form-data">
+                 {% csrf_token %}
+                 {% if messages %}
+                     <ul class="messages">
+                         {% for message in messages %}
+                         <li {% if message.tags %} style="color: rgb(230, 6, 6);" class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                         {% endfor %}
+                     </ul>
+                 {% endif %}
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="mobile_Name" >Product Name *</label>
+                     <input type="text" class="form-control" id="mobile_Name" name="mobile_Name" placeholder="Product Name" required>
+                 </div>
+                 <div class="form-group col-sm-6"> 
+                    <div class="add-box-image" > 
+                         <div class="upload-options">  
+                                <img id="blah" src="" class="addMobileImage"  alt="Select Display Image*" />
+                                <input accept="image/*" class="addMobileInput" type='file'   name="mobile_ImgDisplay"  id="imgInp" />
+                             </div>
+                    </div>   
+            </div> 
+             </div> 
+             
+             <div class="row">
+                <div class="col-sm-6"> 
+                    <label for="mobile_Price">Product Price $(doller)*</label>
+                    <input type="text" class="form-control" id="mobile_Price" name="mobile_Price" placeholder=" Product Price"  required>
+                </div><!-- End .form-group --> 
+               
+             </div> 
+             <div class="row">
+                <div class=" col-sm-6"> 
+                    <label for="mobile_category" >Product Category *</label> 
+                       <div name="mobile_category" class="form-control">
+                           <select id="options"  name="mobile_category"  class="selectdata custom-select" required>
+                               <option  value="" disabled >Select Category</option>
+                               <option  name="mobile_category" value="Mobile" selected>Mobile / Phone</option> 
+                               <option  name="mobile_category" value="Computer">Computer / Laptop</option> 
+                               <option  name="mobile_category" value="Cloth">Cloth</option> 
+                               <option  name="mobile_category" value="shoes">Shoes</option>  
+                               <option  name="mobile_category" value="Tv">T.V</option> 
+                               <option  name="mobile_category" value="Watch">Watch</option> 
+                               <option  name="mobile_category" value="Accessories">Accessories</option> 
+                            </select>  
+                       </div>
+                   </div>
+                
+                <div class="form-group col-sm-6"> 
+                    <label for="mobile_Type">Product Type *</label>
+                    <div name="mobile_Type" class="form-control"> 
+                        <select id="options"  name="mobile_Type"  class="selectdata custom-select" required>
+                            <option  value="" disabled selected>Product Type</option>
+                            <option  name="mobile_Type" value="Basic Phone">Basic Phone</option>
+                            <option  name="mobile_Type" value="Simple Phone">Simple Phone</option>
+                            <option  name="mobile_Type" value="iPhone">iPhone</option>
+                            <option  name="mobile_Type" value="Apple">Apple</option>
+                            <option  name="mobile_Type" value="Walkie Talkie">Walkie Talkie</option>
+                            <option  name="mobile_Type" value="Kit Mobile">Kit Mobile</option>
+                            <option  name="mobile_Type" value="Smartphones">Smartphones</option>
+                            <option  name="mobile_Type" value="Keyboard Mobile">Keyboard Mobile</option>
+                            <option  name="mobile_Type" value="Tablets">Tablets</option> 
+                            <option  name="mobile_Type" value="E-readers">E-readers</option>
+                            <option  name="mobile_Type" value="Smart Watch Mobile">Smart Watch Mobile</option>
+                            <option  name="mobile_Type" value="Sliding Phone">Sliding Phone</option>
+                            <option  name="mobile_Type" value="Flip Phone">Flip Phone</option>
+                            <option  name="mobile_Type" value="Phablets Phone">Phablets Phone</option>
+                            <option  name="mobile_Type" value="Folding Phone">Folding Phone</option>
+                            <option  name="mobile_Type" value="Rugged Phone">Rugged Phone</option>
+                            <option  name="mobile_Type" value="Mix (Touch and Keyboard)">Mix (Touch & Keyboard)</option>
+                            <option  name="mobile_Type" value="Handheld Gaming Consoles">Handheld Gaming Consoles</option>
+                            <option  name="mobile_Type" value="Other">Other</option>
+                        </select>  
+                    </div>
+                </div><!-- End .form-group -->
+             </div>
+             <div class="row">
+                  
+                 <div class="form-group col-sm-6"> 
+                     <label for="mobile_Brand">Product Brand *</label>
+                     <input type="text" class="form-control" id="mobile_Brand" name="mobile_Brand" placeholder="Product Brand"  required>
+                 </div><!-- End .form-group -->
+                 <div class=" col-sm-6"> 
+                     <label for="mobile_MadeByCountry" >Made By Country *</label>
+                     <input type="text" class="form-control" id="mobile_MadeByCountry" name="mobile_MadeByCountry" placeholder="Made by Country Name" required>
+                 </div>
+             </div> 
+             
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="mobile_Size" >Product Size *</label>
+                     <input type="text" class="form-control" id="mobile_Size" name="mobile_Size" placeholder="Product Size: 6.67 (only in inches)"  required>
+                 </div>
+                 
+                 <div class="form-group col-sm-3 "> 
+                     <label for="mobile_Resolution1">Mobile Resolution *</label>
+                     <input type="number" class="form-control" id="mobile_Resolution1" name="mobile_Resolution1"  placeholder="1024 pixels"  required>
+                 </div><!-- End .form-group --> 
+                 <div class="form-group col-sm-3">  
+                     <label for="mobile_Resolution2">(pixels x Pixels)</label>
+                     <input type="number" class="form-control" id="mobile_Resolution2" name="mobile_Resolution2"  placeholder=" x 2048 pixels"  required>
+                 </div><!-- End .form-group -->
+                 
+             </div> 
+             <div class="row" >
+             <div class=" col-sm-6"> 
+                 <label for="mobile_OS" >Mobile Operating System *</label>
+                 <div name="mobile_OS" class="form-control">
+                     <select id="options"  name="mobile_OS"  class="selectdata custom-select" required>
+                         <option  value="" disabled selected>Mobile Operating System</option>
+                         <option  name="mobile_OS" value="Android">Android</option>
+                         <option  name="mobile_OS" value="Android One">Android One</option> 
+                         <option  name="mobile_OS" value="iPhone">iPhone</option>  
+                         <option  name="mobile_OS" value="iOS">iOS</option>
+                         <option  name="mobile_OS" value="iOS 10">iOS 10</option>
+                         <option  name="mobile_OS" value="BlackBerry">BlackBerry</option>  
+                         <option  name="mobile_OS" value="BlackBerry 10">BlackBerry 10</option> 
+                         <option  name="mobile_OS" value="Windows Phone">Windows Phone</option> 
+                         <option  name="mobile_OS" value="Windows Phone 7">Windows Phone 7</option> 
+                         <option  name="mobile_OS" value="Tizen">Tizen</option>
+                         <option  name="mobile_OS" value="KaiOS">KaiOS</option> 
+                         <option  name="mobile_OS" value="iQOO UI">iQOO UI</option> 
+                         <option  name="mobile_OS" value="XOS">XOS</option> 
+                         <option  name="mobile_OS" value="One UI">One UI</option>
+                         <option  name="mobile_OS" value="Realme UI">Realme UI</option>
+                         <option  name="mobile_OS" value="iPadOS">iPadOS</option> 
+                         <option  name="mobile_OS" value="Symbian OS">Symbian OS</option>
+                         <option  name="mobile_OS" value="Palm OS">Palm OS</option>
+                         <option  name="mobile_OS" value="Bada OS">Bada OS</option>
+                         <option  name="mobile_OS" value="Harmony OS">Harmony OS</option>
+                         <option  name="mobile_OS" value="ChromeOS">ChromeOS</option> 
+                         <option  name="mobile_OS" value="WatchOS">WatchOS</option> 
+                         <option  name="mobile_OS" value="Linux">Linux</option>  
+                         <option  name="mobile_OS" value="Window 10">Window 10</option> 
+                         <option  name="mobile_OS" value="Window 11">Window 11</option>  
+                         <option  name="mobile_OS" value="Window 10 Mobile">Window 10 Mobile</option> 
+                         <option  name="mobile_OS" value="Microsoft Windows">Microsoft Windows</option> 
+                         <option  name="mobile_OS" value="LuneOS">LuneOS</option> 
+                         <option  name="mobile_OS" value="LineageOS">LineageOS</option>
+                         <option  name="mobile_OS" value="GrapheneOS">GrapheneOS</option> 
+                         <option  name="mobile_OS" value="CopperheadOS">CopperheadOS</option>
+                         <option  name="mobile_OS" value="WebOS">WebOS</option> 
+                         <option  name="mobile_OS" value="B2G OS">B2G OS</option> 
+                         <option  name="mobile_OS" value="MacOS">MacOS</option> 
+                         <option  name="mobile_OS" value="Phoenix">Phoenix OS</option> 
+                         <option  name="mobile_OS" value="AliOS">AliOS</option>  
+                         <option  name="mobile_OS" value="EMUI">EMUI</option> 
+                         <option  name="mobile_OS" value="Fire OS">Fire OS</option> 
+                         <option  name="mobile_OS" value="Flyme OS">Flyme OS</option> 
+                         <option  name="mobile_OS" value="AliOS">AliOS</option> 
+                         <option  name="mobile_OS" value="FuntouchOS">FuntouchOS</option> 
+                         <option  name="mobile_OS" value="GrapheneOS">GrapheneOS</option> 
+                         <option  name="mobile_OS" value="HiOS">HiOS</option> 
+
+                     </select>  
+                 </div>
+             </div>
+             
+             <div class="form-group col-sm-6"> 
+                 <label for="mobile_Card">Mobile Card Holder *</label>
+                 <div name="mobile_Card" class="form-control">
+                     <select id="options"  name="mobile_Card"  class="selectdata custom-select" required>
+                         <option  value="" disabled selected>Mobile Card Options</option>
+                         <option  name="mobile_Card" value="Single Sim Card , with SD Card">Single Sim Card , with SD Card</option> 
+                         <option  name="mobile_Card" value="Single Sim Card , without SD Card">Single Sim Card , without SD Card</option> 
+                         <option  name="mobile_Card" value="Double Sim Card , without SD card">Dual Sim Card , without SD card </option> 
+                         <option  name="mobile_Card" value="Double Sim Card , with SD card">Dual Sim Card , with SD card </option> 
+                         <option  name="mobile_Card" value="Without Sim Card , with SD card">Without Sim Card , with SD card </option> 
+                         <option  name="mobile_Card" value="Without Sim Card , without SD Card">Without Sim Card , without SD Card</option> 
+                     </select>  
+                 </div>
+             </div><!-- End .form-group -->
+             </div>
+             <div class="row"> 
+                 <div class="form-group col-sm-4"> 
+                     <label for="mobile_Storage_ROM1">Mobile ROM Storage *</label>
+                     <input type="number" class="form-control" id="mobile_Storage_ROM1" name="mobile_Storage_ROM1" placeholder="Mobile ROM Storage" required>
+                 </div><!-- End .form-group -->
+                 <div class=" col-sm-2"> 
+                     <label for="mobile_Storage_ROM2" >Bits *</label>
+                     <div name="mobile_Storage_ROM2" class="form-control">
+                         <select id="options"  name="mobile_Storage_ROM2"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Mobile ROM Size</option>
+                             <option  name="mobile_Storage_ROM2" value="EB">EB ( Exa-Byte)</option>
+                             <option  name="mobile_Storage_ROM2" value="PB">PB ( Peta-Byte)</option>
+                             <option  name="mobile_Storage_ROM2" value="TB">TB ( Tera-Byte)</option> 
+                             <option  name="mobile_Storage_ROM2" value="GB">GB ( Giga-Byte)</option> 
+                             <option  name="mobile_Storage_ROM2" value="MB">MB ( Mega-Byte)</option> 
+                             <option  name="mobile_Storage_ROM2" value="KB">KB ( Kilo Byte)</option> 
+                             <option  name="mobile_Storage_ROM2" value="B">B ( Byte)</option> 
+                         </select>  
+                     </div>
+                 </div>
+                 <div class=" col-sm-4"> 
+                     <label for="mobile_Storage_RAM1" >Mobile RAM Storage *</label>
+                     <input type="number" class="form-control" id="mobile_Storage_RAM" name="mobile_Storage_RAM1" placeholder="Mobile RAM Store" required>
+                 </div>
+                 <div class=" col-sm-2"> 
+                     <label for="mobile_Storage_RAM2" >Bits *</label>
+                     <div name="mobile_Storage_RAM2" class="form-control">
+                         <select id="options"  name="mobile_Storage_RAM2"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Mobile RAM Size</option> 
+                             <option  name="mobile_Storage_RAM2" value="TB">TB ( Tera-Byte)</option> 
+                             <option  name="mobile_Storage_RAM2" value="GB">GB ( Giga-Byte)</option> 
+                             <option  name="mobile_Storage_RAM2" value="MB">MB ( Mega-Byte)</option> 
+                             <option  name="mobile_Storage_RAM2" value="KB">KB ( Kilo Byte)</option> 
+                             <option  name="mobile_Storage_RAM2" value="B">B ( Byte)</option> 
+                         </select>  
+                     </div>
+                 </div>
+             </div> 
+             
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="mobile_BatteryTiming" >Mobile Battery Timing *</label>
+                     <div name="mobile_BatteryTiming" class="form-control">
+                         <select id="options"  name="mobile_BatteryTiming"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Mobile Battery Condition</option>
+                             <option  name="mobile_BatteryTiming" value=" ( 90% - 100% ) - Excellent ">( 90% - 100%  ) - Excellent </option>
+                             <option  name="mobile_BatteryTiming" value=" ( 80% - 89% ) - Best ">( 80% - 89% ) - Best </option>
+                             <option  name="mobile_BatteryTiming" value=" ( 70% - 79% ) - Better ">( 70% - 79% ) - Better </option>
+                             <option  name="mobile_BatteryTiming" value=" ( 60% - 69% ) - Good ">( 60% - 69% ) - Good </option>
+                             <option  name="mobile_BatteryTiming" value=" ( 50% - 59% ) - Poor ">( 50% - 59% ) - Poor </option>
+                             <option  name="mobile_BatteryTiming" value=" ( 40% - 49% ) - Fair ">( 40% - 49% ) - Fair </option> 
+                             <option  name="mobile_BatteryTiming" value=" ( 1% - 39% ) - Dead ">( 1%-39% ) - Dead </option>
+                         </select>  
+                     </div>
+                 </div>
+                 <div class="form-group col-sm-6"> 
+                     <label for="mobile_Color">Mobile Colors *</label>
+                     <input type="text" class="form-control" id="mobile_Color" name="mobile_Color" placeholder="Mobile Color" required>
+                 </div><!-- End .form-group -->
+             </div> 
+             
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="mobile_Condition" >Product Condition *</label> 
+                     <div name="mobile_Condition" class="form-control">
+                         <select id="options"  name="mobile_Condition"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Product Condition</option>
+                             <option  name="mobile_Condition" value=" ( 90% - 100% ) - Excellent ">( 90% - 100%  ) - Excellent </option>
+                             <option  name="mobile_Condition" value=" ( 80% - 89% ) - Best ">( 80% - 89% ) - Best </option>
+                             <option  name="mobile_Condition" value=" ( 70% - 79% ) - Better ">( 70% - 79% ) - Better </option>
+                             <option  name="mobile_Condition" value=" ( 60% - 69% ) - Good ">( 60% - 69% ) - Good </option>
+                             <option  name="mobile_Condition" value=" ( 50% - 59% ) - Poor ">( 50% - 59% ) - Poor </option>
+                             <option  name="mobile_Condition" value=" ( 40% - 49% ) - Fair ">( 40% - 49% ) - Fair </option> 
+                             <option  name="mobile_Condition" value=" ( 1% - 39% ) - Dead ">( 1%-39% ) - Dead </option>
+                         </select>  
+                     </div>
+                 </div>
+                 <div class="form-group col-sm-6"> 
+                     <label for="mobile_Freshnes">Product Freshness *</label> 
+                     <div name="mobile_Freshnes" class="form-control">
+                         <select id="options"  name="mobile_Freshnes"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Product Freshness</option>
+                             <option  name="mobile_Freshnes" value="New" >New</option>
+                             <option  name="mobile_Freshnes" value="Old">Old</option>
+                             <option  name="mobile_Freshnes" value="Mint">Mint</option>
+                             <option  name="mobile_Freshnes" value="A Block">A Block</option>
+                             <option  name="mobile_Freshnes" value="B Block">B Block</option>
+                             <option  name="mobile_Freshnes" value="C Block">C Block</option>
+                             <option  name="mobile_Freshnes" value="D Block">D Block</option>
+                             <option  name="mobile_Freshnes" value="Open Box">Open Box</option>
+                             <option  name="mobile_Freshnes" value="Second Hand">Second Hand</option>
+                             <option  name="mobile_Freshnes" value="Refurbished">Refurbished</option>
+                             <option  name="mobile_Freshnes" value="Certified Refurbished">Certified Refurbished</option>
+                             <option  name="mobile_Freshnes" value="Certified Pre-Owned">Certified Pre-Owned</option>
+                             <option  name="mobile_Freshnes" value="Parts or not Workking" >Parts or not Workking</option>
+                             
+                         </select>  
+                     </div>
+                 </div><!-- End .form-group -->
+             </div> 
+             
+             <div class="row" style="background-color: rgb(216, 209, 209);">
+                 <div class=" col-sm-4"> 
+                     <label for="mobile_Camera" >Mobile Camera *</label>
+                     <div name="mobile_Camera" class="form-control">
+                         <select id="options"  name="mobile_Camera"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Mobile Camera status select</option>
+                             <option  name="mobile_Camera" value="Signle Back Camera, with Front Camera">Signle Back Camera, with Front Camera</option>
+                             <option  name="mobile_Camera" value="Dual Back Camera, with Front Camera">Dual Back Camera, with Front Camera</option>
+                             <option  name="mobile_Camera" value="Triple Back Camera, with Front Camera">Triple Back Camera, with Front Camera</option>
+                             <option  name="mobile_Camera" value="Rotatig Camera, with Front Camera">Rotatig Camera, with Front Camera</option> 
+                             <option  name="mobile_Camera" value="Signle Back Camera, Without Front Camera">Signle Back Camera, without Front Camera</option>
+                             <option  name="mobile_Camera" value="Dual Back Camera, Without Front Camera">Dual Back Camera, without Front Camera</option>
+                             <option  name="mobile_Camera" value="Triple Back Camera, Without Front Camera">Triple Back Camera, without Front Camera</option>
+                             <option  name="mobile_Camera" value="Rotatig Camera, Without Front Camera">Rotatig Camera, without Front Camera</option> 
+                             <option  name="mobile_Camera" value="Without Signle Back Camera, With Front Camera">Without Signle Back Camera, With Front Camera</option> 
+                             <option  name="mobile_Camera" value="Without Rotatig Camera, With Front Camera">Without Rotatig Camera, With Front Camera</option>
+                             <option  name="mobile_Camera" value="Both Back & Front Camera">Both Back & Front Camera</option>
+                             <option  name="mobile_Camera" value="Not Available">Not Available</option> 
+                         </select>  
+                     </div>
+                 </div>
+                 <div class=" col-sm-4"> 
+                     <label for="mobile_Camera2" >Back Camera *</label>
+                     <input type="number" class="form-control" id="mobile_Camera2" name="mobile_Camera2" placeholder="50Mega Pixels Back" required>
+                 </div>
+                 <div class=" col-sm-4"> 
+                     <label for="mobile_Camera3" >MP Front Camera *</label>
+                     <input type="number" class="form-control" id="mobile_Camera3" name="mobile_Camera3" placeholder="12MP Front" required>
+                 </div>
+                 
+             </div> 
+              
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="mobile_Charger" >Mobile Charger  *</label>
+                     <div name="mobile_Charger" class="form-control">
+                         <select id="options"  name="mobile_Charger"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Mobile Charger Options</option>
+                             <option  name="mobile_Charger" value="With Charger">With Charger</option> 
+                             <option  name="mobile_Charger" value="Without Charger">Without Charger</option>  
+                         </select>  
+                     </div>
+                 </div>
+                 <div class=" col-sm-6"> 
+                     <label for="mobile_Status" >Product Status *</label>
+                     <div name="mobile_Status" class="form-control">
+                         <select id="options"  name="mobile_Status"  class="selectdata custom-select" required>
+                             <option  value="" disabled selected>Product Status</option>
+                             <option  name="mobile_Status" value="Available">Available</option>
+                             <option  name="mobile_Status" value="Not Available">Not Available</option>
+                             <option  name="mobile_Status" value="Limited Addition">Limited Addition</option>
+                         </select>  
+                     </div>
+                 </div>
+                 
+             </div> 
+               
+             <div class="row">
+                 <div class=" col-sm-6"> 
+                     <label for="mobile_QR_Code" >Product QR Code *</label>
+                     <input type="text" class="form-control" id="mobile_QR_Code" name="mobile_QR_Code" placeholder="Product QR-Code" required>
+                 </div>
+                 <div class="form-group col-sm-6"> 
+                     <label for="mobile_IssueDate">Product Issue Date *</label> 
+                     <input type="date" class="form-control" id="mobile_IssueDate" name="mobile_IssueDate" required>
+                 </div><!-- End .form-group -->
+             </div>
+             
+             <div class="row">
+                 <div class=" col-sm-12"> 
+                 <label for="mobile_Description">Product Description *</label>
+                 <textarea type="text" class="form-control" id="mobile_Description" name="mobile_Description" placeholder="Product Description" required></textarea>
+             </div><!-- End .form-group -->
+                 
+                 
+             </div> 
+
+             <div class="row">
+                <div class=" col-sm-3"> 
+                <label for="mobile_Photo1">Extra Images View-1 *</label>
+                <input type="file" class="form-control" id="mobile_Photo1" name="mobile_Photo1" placeholder="Product Image View 1" required />
+            </div><!-- End .form-group -->
+                
+                <div class="form-group col-sm-3"  >  
+                    <label for="mobile_Photo2"> Images View-2 *</label>
+                    <input type="file" class="form-control" id="mobile_Photo2" name="mobile_Photo2" required  />
+                </div><!-- End .form-group -->
+                <div class="form-group col-sm-3"  >  
+                    <label for="mobile_Photo3"> Images View-3 *</label>
+                    <input type="file" class="form-control" id="mobile_Photo3" name="mobile_Photo3" required  />
+                </div><!-- End .form-group -->
+                <div class="form-group col-sm-3"  >  
+                    <label for="mobile_Photo4"> Images View-4 *</label>
+                    <input type="file" class="form-control" id="mobile_Photo4" name="mobile_Photo4" required  />
+                </div><!-- End .form-group -->
+            </div> 
+             
+                 <div class=" form-group "> 
+                     <label for="mobile_Extra" >Mobile Extra *</label>
+                     <input type="text" class="form-control" id="mobile_Extra" name="mobile_Extra" placeholder="Mobile Extra Feature" required>
+                 </div>    
+
+             <div class="header-right ">
+                 <button type="submit" class="mybtn ">
+                     <span>Save Product </span> 
+                     <span class="material-symbols-outlined">playlist_add</span>
+                 </button> 
+             </div><!-- End .form-footer --> 
+       </form>
+
+
+
+       </div></div></div> 
+
+       
+<script>
+    imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+  }
+}
+</script>
+
